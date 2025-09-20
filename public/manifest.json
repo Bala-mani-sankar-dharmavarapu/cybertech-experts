@@ -1,0 +1,20 @@
+{
+  "short_name": "Cyber Tech Experts",
+  "name": "Cyber Tech Experts - Cybersecurity Solutions",
+  "icons": [
+    {
+      "src": "logo-with-bg.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "logo-with-bg.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
