@@ -9,7 +9,9 @@ const Newsletter: React.FC = () => {
     message: "",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -24,7 +26,7 @@ const Newsletter: React.FC = () => {
   };
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto text-center">
         <div className="space-y-8">
           <div className="space-y-4">
@@ -105,7 +107,7 @@ const Newsletter: React.FC = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="bg-gradient-secondary text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105"
+              className="bg-gradient-secondary text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105"
             >
               Send Message
             </button>

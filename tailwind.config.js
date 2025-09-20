@@ -63,6 +63,21 @@ module.exports = {
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
       },
+      fontSize: {
+        xs: ["0.7rem", { lineHeight: "1rem" }],
+        sm: ["0.8rem", { lineHeight: "1.25rem" }],
+        base: ["0.9rem", { lineHeight: "1.5rem" }],
+        lg: ["1rem", { lineHeight: "1.75rem" }],
+        xl: ["1.1rem", { lineHeight: "1.75rem" }],
+        "2xl": ["1.3rem", { lineHeight: "2rem" }],
+        "3xl": ["1.6rem", { lineHeight: "2.25rem" }],
+        "4xl": ["2rem", { lineHeight: "2.5rem" }],
+        "5xl": ["2.4rem", { lineHeight: "1" }],
+        "6xl": ["2.8rem", { lineHeight: "1" }],
+        "7xl": ["3.2rem", { lineHeight: "1" }],
+        "8xl": ["3.6rem", { lineHeight: "1" }],
+        "9xl": ["4rem", { lineHeight: "1" }],
+      },
       animation: {
         float: "float 6s ease-in-out infinite",
         glow: "glow 2s ease-in-out infinite alternate",

@@ -50,7 +50,7 @@ const SecurityServices: React.FC = () => {
             <div key={service.id} className="text-center group">
               <div className="relative mb-8">
                 <div className="flex justify-center">
-                  <div className="p-6 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="p-6 text-white bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
                     {getIcon(service.icon)}
                   </div>
                 </div>

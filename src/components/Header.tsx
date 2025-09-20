@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Shield, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,50 +14,80 @@ const Header: React.FC = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="relative">
-              <Shield className="h-8 w-8 text-blue-400" />
-              <div className="absolute -top-1 -right-1 h-3 w-3 bg-purple-500 rounded-full animate-pulse"></div>
-            </div>
-            <span className="text-2xl font-bold text-white">CYBER TECH EXPERTS</span>
+            <img
+              src="/cybertechexperts-logo.png"
+              alt="Cyber Tech Experts Logo"
+              className="h-10 w-10 object-contain"
+            />
+            <span className="text-2xl font-bold text-white">
+              CYBER TECH EXPERTS
+            </span>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a
-              href="#home"
+            <button
+              onClick={() => {
+                document.getElementById("home")?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
               className="text-white hover:text-blue-400 transition-colors duration-300"
             >
               Home
-            </a>
-            <a
-              href="#about"
+            </button>
+            <button
+              onClick={() => {
+                document.getElementById("about")?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
               className="text-white hover:text-blue-400 transition-colors duration-300"
             >
               About Us
-            </a>
-            <a
-              href="#services"
+            </button>
+            <button
+              onClick={() => {
+                document.getElementById("services")?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
               className="text-white hover:text-blue-400 transition-colors duration-300"
             >
               Services
-            </a>
-            <a
-              href="#blog"
+            </button>
+            <button
+              onClick={() => {
+                document.getElementById("blog")?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
               className="text-white hover:text-blue-400 transition-colors duration-300"
             >
               Blog
-            </a>
-            <a
-              href="#contact"
+            </button>
+            <button
+              onClick={() => {
+                document.getElementById("contact")?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
               className="text-white hover:text-blue-400 transition-colors duration-300"
             >
               Contact
-            </a>
+            </button>
           </nav>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <button className="bg-gradient-secondary text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105">
+            <button
+              onClick={() => {
+                document.getElementById("contact")?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
+              className="bg-gradient-secondary text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105"
+            >
               Get Free Quotes
             </button>
           </div>
@@ -79,37 +109,70 @@ const Header: React.FC = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-800">
             <nav className="flex flex-col space-y-4">
-              <a
-                href="#home"
-                className="text-white hover:text-blue-400 transition-colors duration-300"
+              <button
+                onClick={() => {
+                  document.getElementById("home")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                  setIsMenuOpen(false);
+                }}
+                className="text-white hover:text-blue-400 transition-colors duration-300 text-left"
               >
                 Home
-              </a>
-              <a
-                href="#about"
-                className="text-white hover:text-blue-400 transition-colors duration-300"
+              </button>
+              <button
+                onClick={() => {
+                  document.getElementById("about")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                  setIsMenuOpen(false);
+                }}
+                className="text-white hover:text-blue-400 transition-colors duration-300 text-left"
               >
                 About Us
-              </a>
-              <a
-                href="#services"
-                className="text-white hover:text-blue-400 transition-colors duration-300"
+              </button>
+              <button
+                onClick={() => {
+                  document.getElementById("services")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                  setIsMenuOpen(false);
+                }}
+                className="text-white hover:text-blue-400 transition-colors duration-300 text-left"
               >
                 Services
-              </a>
-              <a
-                href="#blog"
-                className="text-white hover:text-blue-400 transition-colors duration-300"
+              </button>
+              <button
+                onClick={() => {
+                  document.getElementById("blog")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                  setIsMenuOpen(false);
+                }}
+                className="text-white hover:text-blue-400 transition-colors duration-300 text-left"
               >
                 Blog
-              </a>
-              <a
-                href="#contact"
-                className="text-white hover:text-blue-400 transition-colors duration-300"
+              </button>
+              <button
+                onClick={() => {
+                  document.getElementById("contact")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                  setIsMenuOpen(false);
+                }}
+                className="text-white hover:text-blue-400 transition-colors duration-300 text-left"
               >
                 Contact
-              </a>
-              <button className="bg-gradient-secondary text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 w-full mt-4">
+              </button>
+              <button
+                onClick={() => {
+                  document.getElementById("contact")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                  setIsMenuOpen(false); // Close mobile menu after clicking
+                }}
+                className="bg-gradient-secondary text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 w-full mt-4"
+              >
                 Get Free Quotes
               </button>
             </nav>
