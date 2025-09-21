@@ -22,31 +22,36 @@ const Services: React.FC = () => {
     {
       id: "2",
       title: "Malware & Ransomware Simulation",
-      description: "Safe, controlled attack simulations to test defenses and strengthen security posture.",
+      description:
+        "Safe, controlled attack simulations to test defenses and strengthen security posture.",
       icon: "Search",
     },
     {
       id: "3",
       title: "Website & Brand Protection",
-      description: "Identify and remove malicious domains with dark web monitoring and quick takedowns.",
+      description:
+        "Identify and remove malicious domains with dark web monitoring and quick takedowns.",
       icon: "Globe",
     },
     {
       id: "4",
       title: "Vulnerability Assessments",
-      description: "Network & application scans with prioritized roadmap for patching and compliance support.",
+      description:
+        "Network & application scans with prioritized roadmap for patching and compliance support.",
       icon: "Network",
     },
     {
       id: "5",
       title: "24/7 Incident Response",
-      description: "Rapid containment and recovery from cyber incidents with digital forensics analysis.",
+      description:
+        "Rapid containment and recovery from cyber incidents with digital forensics analysis.",
       icon: "Lock",
     },
     {
       id: "6",
       title: "Cybersecurity Training",
-      description: "SOC Analyst, Application Security, and Corporate Awareness training programs.",
+      description:
+        "SOC Analyst, Application Security, and Corporate Awareness training programs.",
       icon: "Cloud",
     },
   ];
@@ -71,14 +76,16 @@ const Services: React.FC = () => {
           {/* Left Content */}
           <div className="lg:col-span-1 space-y-8">
             <div className="space-y-4">
-              <h2 className="text-accent-400 text-lg font-semibold tracking-wide uppercase">
+              <h2 className="text-accent-400 text-xl font-semibold tracking-wide uppercase">
                 OUR SERVICES AT A GLANCE
               </h2>
               <h3 className="text-3xl md:text-4xl font-bold text-white">
                 Comprehensive Cybersecurity Solutions
               </h3>
               <p className="text-gray-300 text-lg leading-relaxed">
-                From phishing simulations to incident response, we provide tailored cybersecurity solutions to protect your organization against modern threats.
+                From phishing simulations to incident response, we provide
+                tailored cybersecurity solutions to protect your organization
+                against modern threats.
               </p>
             </div>
           </div>

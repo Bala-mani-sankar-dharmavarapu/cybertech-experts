@@ -16,14 +16,17 @@ const AboutUs: React.FC = () => {
           {/* Left Content */}
           <div className="space-y-8">
             <div className="space-y-4">
-              <h2 className="text-accent-400 text-lg font-semibold tracking-wide uppercase">
+              <h2 className="text-accent-400 text-xl font-semibold tracking-wide uppercase">
                 ABOUT US
               </h2>
               <h3 className="text-3xl md:text-4xl font-bold text-white">
                 Helping Businesses Stay Ahead of Cybercriminals
               </h3>
               <p className="text-gray-300 text-lg leading-relaxed">
-                At Cyber Tech Experts, we help businesses stay ahead of cybercriminals. Our team of certified professionals brings years of experience in cyber defense, attack simulations, and brand protection.
+                At Cyber Tech Experts, we help businesses stay ahead of
+                cybercriminals. Our team of certified professionals brings years
+                of experience in cyber defense, attack simulations, and brand
+                protection.
               </p>
             </div>
 
@@ -31,7 +34,9 @@ const AboutUs: React.FC = () => {
             <div className="space-y-4">
               <h4 className="text-xl font-semibold text-white">Our Mission:</h4>
               <p className="text-gray-300 text-lg leading-relaxed">
-                To strengthen business resilience by simulating real-world threats, identifying vulnerabilities, and building proactive defense strategies before damage occurs.
+                To strengthen business resilience by simulating real-world
+                threats, identifying vulnerabilities, and building proactive
+                defense strategies before damage occurs.
               </p>
             </div>
 
@@ -42,7 +47,7 @@ const AboutUs: React.FC = () => {
                   <Check className="h-6 w-6 text-accent-400" />
                 </div>
                 <span className="text-gray-300 text-lg">
-                  Certified Security Professionals (CISSP, CEH, OSCP)
+                  Certified Security Professionals
                 </span>
               </div>
               <div className="flex items-center space-x-4">

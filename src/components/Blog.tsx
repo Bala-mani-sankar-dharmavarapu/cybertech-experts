@@ -18,7 +18,8 @@ const Blog: React.FC = () => {
     },
     {
       id: "3",
-      title: "Protecting Your Brand from Cybercriminals: Takedown Services Explained",
+      title:
+        "Protecting Your Brand from Cybercriminals: Takedown Services Explained",
       category: "Brand Protection",
       image: "Monitor",
     },

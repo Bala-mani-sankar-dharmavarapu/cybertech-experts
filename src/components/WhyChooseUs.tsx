@@ -11,9 +11,11 @@ import {
 
 const WhyChooseUs: React.FC = () => {
   const features = [
-    { text: "Quick Threat Detection", icon: Search },
+    { text: "Proactive Threat Detection.", icon: Search },
+    { text: "AI-Powered Detection", icon: Shield },
+    { text: "Fast Website Recovery", icon: RotateCcw },
     { text: "Instant Malware Removal", icon: Shield },
-    { text: "Restore Hack Website", icon: RotateCcw },
+    { text: "Trusted Experts", icon: Shield },
   ];
 
   return (
@@ -23,8 +25,8 @@ const WhyChooseUs: React.FC = () => {
           {/* Left Content */}
           <div className="space-y-8">
             <div className="space-y-4">
-              <h2 className="text-accent-400 text-lg font-semibold tracking-wide uppercase">
-                WHY CHOOSE US
+              <h2 className="text-accent-400 text-xl font-semibold tracking-wide uppercase">
+                WHY CHOOSE CYBER TECH EXPERTS
               </h2>
               <h3 className="text-3xl md:text-4xl font-bold text-white">
                 We Protect You From Cyber Attacks

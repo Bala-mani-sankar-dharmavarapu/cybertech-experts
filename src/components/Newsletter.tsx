@@ -30,7 +30,7 @@ const Newsletter: React.FC = () => {
       <div className="max-w-4xl mx-auto text-center">
         <div className="space-y-8">
           <div className="space-y-4">
-            <h2 className="text-accent-400 text-lg font-semibold tracking-wide uppercase">
+            <h2 className="text-accent-400 text-xl font-semibold tracking-wide uppercase">
               CONTACT US
             </h2>
             <h3 className="text-3xl md:text-4xl font-bold text-white">
@@ -39,7 +39,6 @@ const Newsletter: React.FC = () => {
             <div className="text-gray-300 text-lg space-y-2">
               <p>📧 Email: info@cybertechexperts.com</p>
               <p>📞 Phone: +91-XXXXXXXXXX</p>
-              <p>📍 Location: Hyderabad, India</p>
             </div>
           </div>
 

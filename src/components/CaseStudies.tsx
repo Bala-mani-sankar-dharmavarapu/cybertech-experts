@@ -6,32 +6,36 @@ const CaseStudies: React.FC = () => {
     {
       id: "1",
       title: "Financial Client Success",
-      description: "Employee phishing click rate dropped from 32% to under 5% in just 3 months after our training program.",
+      description:
+        "Employee phishing click rate dropped from 32% to under 5% in just 3 months after our training program.",
       icon: TrendingDown,
       metric: "32% → 5%",
-      metricLabel: "Phishing Click Rate"
+      metricLabel: "Phishing Click Rate",
     },
     {
-      id: "2", 
+      id: "2",
       title: "SaaS Provider Protection",
-      description: "15 fake domains impersonating the client's brand were taken down within weeks, preventing fraud and reputation loss.",
+      description:
+        "100+ fake domains impersonating the client's brand were taken down within weeks, preventing fraud and reputation loss.",
       icon: Shield,
-      metric: "15",
-      metricLabel: "Domains Takedown"
-    }
+      metric: "100+",
+      metricLabel: "Domains Takedown",
+    },
   ];
 
   const testimonials = [
     {
       id: "1",
-      quote: "Cyber Tech Experts transformed our employees into our strongest defense against phishing.",
-      author: "CTO, FinTech Company"
+      quote:
+        "Cyber Tech Experts transformed our employees into our strongest defense against phishing.",
+      author: "CTO, FinTech Company",
     },
     {
       id: "2",
-      quote: "Their takedown service saved our brand from multiple fraud attempts.",
-      author: "Head of Security, SaaS Firm"
-    }
+      quote:
+        "Their takedown service saved our brand from multiple fraud attempts.",
+      author: "Head of Security, SaaS Firm",
+    },
   ];
 
   const getIcon = (IconComponent: React.ComponentType<any>) => {
@@ -43,19 +47,20 @@ const CaseStudies: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center space-y-4 mb-16">
-          <h2 className="text-accent-400 text-lg font-semibold tracking-wide uppercase">
+          <h2 className="text-accent-400 text-xl font-semibold tracking-wide uppercase">
             PROVEN RESULTS
           </h2>
           <h3 className="text-3xl md:text-4xl font-bold text-white">
             Real Impact, Real Results
           </h3>
           <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-            Our clients see measurable improvements in their cybersecurity posture through our comprehensive solutions.
+            Our clients see measurable improvements in their cybersecurity
+            posture through our comprehensive solutions.
           </p>
         </div>
 
         {/* Case Studies */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 gap-8 mb-4">
           {caseStudies.map((study) => (
             <div
               key={study.id}
@@ -68,8 +73,12 @@ const CaseStudies: React.FC = () => {
                     {getIcon(study.icon)}
                   </div>
                   <div className="text-right">
-                    <div className="text-2xl font-bold text-accent-400">{study.metric}</div>
-                    <div className="text-sm text-gray-400">{study.metricLabel}</div>
+                    <div className="text-2xl font-bold text-accent-400">
+                      {study.metric}
+                    </div>
+                    <div className="text-sm text-gray-400">
+                      {study.metricLabel}
+                    </div>
                   </div>
                 </div>
 
@@ -88,8 +97,10 @@ const CaseStudies: React.FC = () => {
         </div>
 
         {/* Testimonials */}
-        <div className="text-center space-y-8">
-          <h3 className="text-2xl font-bold text-white">What Our Clients Say</h3>
+        {/* <div className="text-center space-y-8">
+          <h3 className="text-2xl font-bold text-white">
+            What Our Clients Say
+          </h3>
           <div className="grid md:grid-cols-2 gap-8">
             {testimonials.map((testimonial) => (
               <div
@@ -110,7 +121,7 @@ const CaseStudies: React.FC = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

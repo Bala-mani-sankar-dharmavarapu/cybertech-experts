@@ -11,15 +11,18 @@ const Hero: React.FC = () => {
           {/* Left Content */}
           <div className="space-y-6 lg:space-y-8">
             <div className="space-y-4">
-              <h2 className="text-accent-400 text-lg font-semibold tracking-wide uppercase">
+              {/* <h2 className="text-accent-400 text-xl font-semibold tracking-wide uppercase">
                 CYBER TECH EXPERTS
-              </h2>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+              </h2> */}
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight">
                 STRONGER SECURITY. SMARTER BUSINESS.
               </h1>
               <p className="text-gray-300 text-lg leading-relaxed max-w-lg">
-                Protect your organization against phishing, malware, and modern
-                cyber threats with tailored solutions from Cyber Tech Experts.
+                Next-Gen Cyber Defense. Built for Modern Enterprises. From
+                phishing and malware to advanced persistent threats, attackers
+                are smarter than ever. At Cyber Tech Experts, our intelligent
+                cybersecurity solutions are designed around your business needs
+                providing adaptive, scalable protection that grows with you.
               </p>
             </div>
 
