@@ -32,9 +32,9 @@ const SecurityServices: React.FC = () => {
   };
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
+    <section className="py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center space-y-8 mb-16">
+        <div className="text-center space-y-8 mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-white">
             Manage Security Services
           </h2>

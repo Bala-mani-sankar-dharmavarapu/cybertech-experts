@@ -48,13 +48,13 @@ function HomePage() {
   return (
     <>
       <Hero />
-      <WhyChooseUs />
       <Academy />
+      <WhyChooseUs />
       <Services />
       <SecurityServices />
       <CaseStudies />
-      <Blog />
       <AboutUs />
+      <Blog />
       <Newsletter />
     </>
   );

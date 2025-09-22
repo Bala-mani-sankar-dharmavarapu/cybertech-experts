@@ -6,24 +6,24 @@ const Academy: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="academy" className="py-16 px-4 sm:px-6 lg:px-8">
+    <section id="academy" className="py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header Section - Centered */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8.5">
           <h2 className="text-accent-400 text-xl font-semibold tracking-wide uppercase mb-4">
             CYBERSECURITY ACADEMY
           </h2>
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Professional Training Programs
           </h3>
-          <p className="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto mb-8">
+          <p className="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto mb-12">
             Enhance your cybersecurity skills with our comprehensive training
             programs. From beginner to advanced levels, we offer hands-on
             training that prepares you for real-world security challenges.
           </p>
 
           {/* Academy Stats */}
-          <div className="flex justify-center mb-12">
+          <div className="flex justify-center mb-16">
             <div className="grid grid-cols-2 gap-6 max-w-md">
               <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-lg p-4">
                 <div className="flex items-center space-x-3">
