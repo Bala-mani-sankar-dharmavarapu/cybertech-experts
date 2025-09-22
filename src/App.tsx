@@ -8,6 +8,7 @@ import {
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import WhyChooseUs from "./components/WhyChooseUs";
+import Academy from "./components/Academy";
 import Services from "./components/Services";
 import SecurityServices from "./components/SecurityServices";
 import CaseStudies from "./components/CaseStudies";
@@ -16,6 +17,7 @@ import AboutUs from "./components/AboutUs";
 import Newsletter from "./components/Newsletter";
 import Footer from "./components/Footer";
 import ServiceDetailPage from "./components/ServiceDetailPage";
+import AcademyPage from "./components/AcademyPage";
 
 // Component to handle scroll restoration
 function ScrollToTop() {
@@ -32,7 +34,7 @@ function ScrollToTop() {
       }
     } else {
       // Save current scroll position when leaving home
-      if (pathname.startsWith("/service/")) {
+      if (pathname.startsWith("/service/") || pathname === "/academy") {
         sessionStorage.setItem("homeScrollPosition", window.scrollY.toString());
         window.scrollTo(0, 0);
       }
@@ -47,6 +49,7 @@ function HomePage() {
     <>
       <Hero />
       <WhyChooseUs />
+      <Academy />
       <Services />
       <SecurityServices />
       <CaseStudies />
@@ -70,6 +73,7 @@ function App() {
               path="/service/:serviceName"
               element={<ServiceDetailPage />}
             />
+            <Route path="/academy" element={<AcademyPage />} />
           </Routes>
         </main>
         <Footer />

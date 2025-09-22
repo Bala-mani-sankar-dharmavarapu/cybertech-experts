@@ -29,3 +29,14 @@ export interface SecurityService {
   title: string;
   icon: string;
 }
+
+export interface TrainingProgram {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  duration: string;
+  level: string;
+  features: string[];
+  benefits: string[];
+}

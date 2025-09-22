@@ -54,7 +54,13 @@ const Services: React.FC = () => {
               {services.map((service) => (
                 <div
                   key={service.id}
-                  onClick={() => navigate(`/service/${service.urlName}`)}
+                  onClick={() => {
+                    if (service.urlName === "cybersecurity-training") {
+                      navigate("/academy");
+                    } else {
+                      navigate(`/service/${service.urlName}`);
+                    }
+                  }}
                   className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-300 group cursor-pointer"
                 >
                   <div className="space-y-4">
@@ -80,7 +86,11 @@ const Services: React.FC = () => {
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
-                        navigate(`/service/${service.urlName}`);
+                        if (service.urlName === "cybersecurity-training") {
+                          navigate("/academy");
+                        } else {
+                          navigate(`/service/${service.urlName}`);
+                        }
                       }}
                       className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors duration-300 group"
                     >

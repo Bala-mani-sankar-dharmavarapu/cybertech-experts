@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
   ArrowLeft,
@@ -13,10 +13,12 @@ import {
   Lock,
 } from "lucide-react";
 import { services } from "../utils/services";
+import ContactFormDialog from "./ContactFormDialog";
 
 const ServiceDetailPage: React.FC = () => {
   const { serviceName } = useParams<{ serviceName: string }>();
   const navigate = useNavigate();
+  const [isContactDialogOpen, setIsContactDialogOpen] = useState(false);
 
   const getIcon = (iconName: string) => {
     const icons: { [key: string]: React.ComponentType<any> } = {
@@ -154,16 +156,23 @@ const ServiceDetailPage: React.FC = () => {
             Contact our cybersecurity experts to learn more about how{" "}
             {service.title} can protect your organization.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-300">
+          <div className="flex justify-center">
+            <button
+              onClick={() => setIsContactDialogOpen(true)}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-300"
+            >
               Contact Us
-            </button>
-            <button className="border border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-300">
-              Request Quote
             </button>
           </div>
         </div>
       </div>
+
+      {/* Contact Form Dialog */}
+      <ContactFormDialog
+        isOpen={isContactDialogOpen}
+        onClose={() => setIsContactDialogOpen(false)}
+        formType="contact"
+      />
     </div>
   );
 };

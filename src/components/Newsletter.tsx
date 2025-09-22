@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Mail, User } from "lucide-react";
+import { Mail, User, Phone } from "lucide-react";
 
 const Newsletter: React.FC = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     email: "",
+    phone: "",
     company: "",
     message: "",
   });
@@ -77,17 +78,36 @@ const Newsletter: React.FC = () => {
               </div>
             </div>
 
-            {/* Company Input */}
-            <div className="mb-6">
-              <input
-                type="text"
-                name="company"
-                value={formData.company}
-                onChange={handleInputChange}
-                placeholder="Company"
-                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                required
-              />
+            {/* Phone and Company Input */}
+            <div className="grid md:grid-cols-2 gap-4 mb-6">
+              {/* Phone Input */}
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Phone className="h-5 w-5 text-gray-400" />
+                </div>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  placeholder="Phone Number"
+                  className="w-full pl-10 pr-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                  required
+                />
+              </div>
+
+              {/* Company Input */}
+              <div>
+                <input
+                  type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleInputChange}
+                  placeholder="Company"
+                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                  required
+                />
+              </div>
             </div>
 
             {/* Message Input */}

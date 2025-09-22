@@ -1,4 +1,4 @@
-import { Service } from "../types";
+import { Service, TrainingProgram } from "../types";
 
 export const services: Service[] = [
   {
@@ -214,6 +214,153 @@ export const services: Service[] = [
       "Executive cybersecurity education",
       "Compliance training requirements",
       "Career development programs",
+    ],
+  },
+];
+
+export const trainingPrograms: TrainingProgram[] = [
+  {
+    id: "1",
+    title: "SOC Analyst Certification",
+    description:
+      "Comprehensive training program for Security Operations Center analysts covering threat detection, incident response, and security monitoring.",
+    icon: "Shield",
+    duration: "40 hours",
+    level: "Intermediate",
+    features: [
+      "Hands-on SIEM training",
+      "Threat hunting techniques",
+      "Incident response procedures",
+      "Log analysis and correlation",
+      "Security tool operation",
+      "Certification exam preparation",
+    ],
+    benefits: [
+      "Industry-recognized certification",
+      "Practical hands-on experience",
+      "Career advancement opportunities",
+      "Enhanced security skills",
+      "Better job market prospects",
+    ],
+  },
+  {
+    id: "2",
+    title: "Application Security Training",
+    description:
+      "Learn secure coding practices, vulnerability assessment, and application security testing methodologies.",
+    icon: "Search",
+    duration: "32 hours",
+    level: "Advanced",
+    features: [
+      "Secure coding principles",
+      "OWASP Top 10 vulnerabilities",
+      "Static and dynamic testing",
+      "Code review techniques",
+      "Security testing tools",
+      "DevSecOps integration",
+    ],
+    benefits: [
+      "Build secure applications",
+      "Reduce security vulnerabilities",
+      "Comply with security standards",
+      "Integrate security in SDLC",
+      "Prevent common attack vectors",
+    ],
+  },
+  {
+    id: "3",
+    title: "Executive Cybersecurity Awareness",
+    description:
+      "Strategic cybersecurity training for executives and decision-makers covering risk management and governance.",
+    icon: "Network",
+    duration: "16 hours",
+    level: "Beginner",
+    features: [
+      "Cybersecurity risk assessment",
+      "Regulatory compliance overview",
+      "Incident response planning",
+      "Security governance frameworks",
+      "Budget planning for security",
+      "Vendor risk management",
+    ],
+    benefits: [
+      "Make informed security decisions",
+      "Understand business risks",
+      "Comply with regulations",
+      "Protect organizational assets",
+      "Lead security initiatives",
+    ],
+  },
+  {
+    id: "4",
+    title: "Penetration Testing Fundamentals",
+    description:
+      "Learn ethical hacking techniques, vulnerability assessment, and penetration testing methodologies.",
+    icon: "Lock",
+    duration: "48 hours",
+    level: "Advanced",
+    features: [
+      "Network penetration testing",
+      "Web application testing",
+      "Social engineering techniques",
+      "Wireless security testing",
+      "Report writing and documentation",
+      "Legal and ethical considerations",
+    ],
+    benefits: [
+      "Identify security weaknesses",
+      "Conduct professional assessments",
+      "Improve security posture",
+      "Career in ethical hacking",
+      "Certified ethical hacker preparation",
+    ],
+  },
+  {
+    id: "5",
+    title: "Cloud Security Training",
+    description:
+      "Comprehensive cloud security training covering AWS, Azure, and GCP security best practices.",
+    icon: "Cloud",
+    duration: "36 hours",
+    level: "Intermediate",
+    features: [
+      "Cloud security architecture",
+      "Identity and access management",
+      "Data protection in cloud",
+      "Compliance and governance",
+      "Security monitoring and logging",
+      "Incident response in cloud",
+    ],
+    benefits: [
+      "Secure cloud deployments",
+      "Understand cloud risks",
+      "Implement security controls",
+      "Comply with cloud regulations",
+      "Career in cloud security",
+    ],
+  },
+  {
+    id: "6",
+    title: "Incident Response Training",
+    description:
+      "Learn effective incident response procedures, digital forensics, and crisis management.",
+    icon: "Globe",
+    duration: "24 hours",
+    level: "Intermediate",
+    features: [
+      "Incident response planning",
+      "Digital forensics basics",
+      "Evidence collection and preservation",
+      "Communication during incidents",
+      "Recovery procedures",
+      "Post-incident analysis",
+    ],
+    benefits: [
+      "Respond effectively to incidents",
+      "Minimize business impact",
+      "Preserve evidence properly",
+      "Improve recovery time",
+      "Build incident response capabilities",
     ],
   },
 ];
