@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Shield,
   Search,
@@ -8,53 +9,10 @@ import {
   Lock,
   ArrowRight,
 } from "lucide-react";
-import { Service } from "../types";
+import { services } from "../utils/services";
 
 const Services: React.FC = () => {
-  const services: Service[] = [
-    {
-      id: "1",
-      title: "Phishing Simulation & Awareness",
-      description:
-        "Conduct realistic phishing campaigns to measure employee readiness and train staff with engaging awareness modules.",
-      icon: "Shield",
-    },
-    {
-      id: "2",
-      title: "Malware & Ransomware Simulation",
-      description:
-        "Safe, controlled attack simulations to test defenses and strengthen security posture.",
-      icon: "Search",
-    },
-    {
-      id: "3",
-      title: "Website & Brand Protection",
-      description:
-        "Identify and remove malicious domains with dark web monitoring and quick takedowns.",
-      icon: "Globe",
-    },
-    {
-      id: "4",
-      title: "Vulnerability Assessments",
-      description:
-        "Network & application scans with prioritized roadmap for patching and compliance support.",
-      icon: "Network",
-    },
-    {
-      id: "5",
-      title: "24/7 Incident Response",
-      description:
-        "Rapid containment and recovery from cyber incidents with digital forensics analysis.",
-      icon: "Lock",
-    },
-    {
-      id: "6",
-      title: "Cybersecurity Training",
-      description:
-        "SOC Analyst, Application Security, and Corporate Awareness training programs.",
-      icon: "Cloud",
-    },
-  ];
+  const navigate = useNavigate();
 
   const getIcon = (iconName: string) => {
     const icons: { [key: string]: React.ComponentType<any> } = {
@@ -96,7 +54,8 @@ const Services: React.FC = () => {
               {services.map((service) => (
                 <div
                   key={service.id}
-                  className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-300 group"
+                  onClick={() => navigate(`/service/${service.urlName}`)}
+                  className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-300 group cursor-pointer"
                 >
                   <div className="space-y-4">
                     {/* Icon */}
@@ -118,7 +77,13 @@ const Services: React.FC = () => {
                     </div>
 
                     {/* Learn More Button */}
-                    <button className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors duration-300 group">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate(`/service/${service.urlName}`);
+                      }}
+                      className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors duration-300 group"
+                    >
                       <span className="text-sm font-medium">Learn More</span>
                       <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                     </button>

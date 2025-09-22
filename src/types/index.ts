@@ -3,6 +3,11 @@ export interface Service {
   title: string;
   description: string;
   icon: string;
+  urlName: string;
+  detailedDescription?: string;
+  features?: string[];
+  benefits?: string[];
+  useCases?: string[];
 }
 
 export interface BlogPost {
