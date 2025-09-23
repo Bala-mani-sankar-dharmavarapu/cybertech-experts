@@ -174,13 +174,20 @@ const WhyChooseUsPage: React.FC = () => {
       <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-purple-900/20"></div>
         <div className="relative max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Why Choose{" "}
-            <span className="text-accent-400">Cyber Tech Experts</span>
+          <h1 className="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
+            <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent animate-slide-in-left hover:animate-text-glow transition-all duration-500">
+              Why Choose
+            </span>
+            <br />
+            <span className="text-accent-400 drop-shadow-lg animate-fade-in-up hover:animate-text-glow transition-all duration-500">
+              Cyber Tech Experts
+            </span>
           </h1>
-          <p className="text-xl text-gray-300 mb-8 max-w-4xl mx-auto">
-            At Cyber Tech Experts, we go beyond traditional cybersecurity. We
-            protect, prevent, and restore—ensuring your business is safe,
+          <p className="text-lg text-gray-200 mb-8 max-w-4xl mx-auto font-light tracking-wide">
+            <span className="text-blue-300 font-medium">
+              At Cyber Tech Experts, we go beyond traditional cybersecurity.
+            </span>{" "}
+            We protect, prevent, and restore—ensuring your business is safe,
             resilient, and operational at all times. Here's why organizations
             trust us for their cybersecurity needs.
           </p>
@@ -191,13 +198,21 @@ const WhyChooseUsPage: React.FC = () => {
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Comprehensive Cybersecurity Solutions
+            <h2 className="text-2xl md:text-3xl font-black text-white mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent animate-slide-in-left hover:animate-text-glow transition-all duration-500">
+                Comprehensive Cybersecurity
+              </span>
+              <br />
+              <span className="text-blue-400 drop-shadow-lg animate-fade-in-up hover:animate-text-glow transition-all duration-500">
+                Solutions
+              </span>
             </h2>
-            <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-              Our comprehensive approach to cybersecurity combines advanced
-              technology, expert knowledge, and proactive strategies to keep
-              your organization secure and resilient.
+            <p className="text-gray-200 text-lg max-w-3xl mx-auto font-light tracking-wide">
+              <span className="text-blue-300 font-medium">
+                Our comprehensive approach to cybersecurity combines advanced
+                technology, expert knowledge, and proactive strategies
+              </span>{" "}
+              to keep your organization secure and resilient.
             </p>
           </div>
 
@@ -242,13 +257,22 @@ const WhyChooseUsPage: React.FC = () => {
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Our Competitive Advantages
+            <h2 className="text-2xl md:text-3xl font-black text-white mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-white via-purple-100 to-white bg-clip-text text-transparent animate-slide-in-left hover:animate-text-glow transition-all duration-500">
+                Our Competitive
+              </span>
+              <br />
+              <span className="text-purple-400 drop-shadow-lg animate-fade-in-up hover:animate-text-glow transition-all duration-500">
+                Advantages
+              </span>
             </h2>
-            <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-              The key differentiators that make Cyber Tech Experts the trusted
-              choice for organizations seeking comprehensive cybersecurity
-              protection and peace of mind.
+            <p className="text-gray-200 text-lg max-w-3xl mx-auto font-light tracking-wide">
+              <span className="text-purple-300 font-medium">
+                The key differentiators that make Cyber Tech Experts the trusted
+                choice
+              </span>{" "}
+              for organizations seeking comprehensive cybersecurity protection
+              and peace of mind.
             </p>
           </div>
 
@@ -319,13 +343,21 @@ const WhyChooseUsPage: React.FC = () => {
       {/* CTA Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Secure Your Organization with Cyber Tech Experts
+          <h2 className="text-2xl md:text-3xl font-black text-white mb-6 leading-tight">
+            <span className="bg-gradient-to-r from-white via-cyan-100 to-white bg-clip-text text-transparent animate-slide-in-left hover:animate-text-glow transition-all duration-500">
+              Secure Your Organization with
+            </span>
+            <br />
+            <span className="text-cyan-400 drop-shadow-lg animate-fade-in-up hover:animate-text-glow transition-all duration-500">
+              Cyber Tech Experts
+            </span>
           </h2>
-          <p className="text-gray-300 text-lg mb-8">
-            Where proactive defense, rapid response, and expert guidance meet
-            measurable results. Protect your business, brand, and clients with
-            confidence.
+          <p className="text-gray-200 text-lg mb-8 font-light tracking-wide">
+            <span className="text-cyan-300 font-medium">
+              Where proactive defense, rapid response, and expert guidance meet
+              measurable results.
+            </span>{" "}
+            Protect your business, brand, and clients with confidence.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button

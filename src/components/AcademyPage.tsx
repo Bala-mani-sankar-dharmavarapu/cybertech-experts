@@ -37,23 +37,33 @@ const AcademyPage: React.FC = () => {
 
           {/* Header Section */}
           <div className="text-center mb-16">
-            <h1 className="text-accent-400 text-xl font-semibold tracking-wide uppercase mb-4">
+            <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400 text-xl font-bold tracking-wider uppercase mb-6">
               CYBERSECURITY ACADEMY
             </h1>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Train Like a Hacker. Defend Like a Pro.
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-8 leading-tight">
+              <span className="bg-gradient-to-r from-white via-green-100 to-white bg-clip-text text-transparent animate-slide-in-left hover:animate-text-glow transition-all duration-500">
+                Train Like a Hacker.
+              </span>
+              <br />
+              <span className="text-green-400 drop-shadow-lg animate-fade-in-up hover:animate-text-glow transition-all duration-500">
+                Defend Like a Pro.
+              </span>
             </h2>
-            <p className="text-gray-300 text-lg leading-relaxed max-w-4xl mx-auto">
-              From real-world attack simulations to global certifications, we
-              prepare you to outsmart cybercriminals and protect what matters
+            <p className="text-gray-200 text-lg leading-relaxed max-w-4xl mx-auto font-light tracking-wide">
+              <span className="text-green-300 font-medium">
+                From real-world attack simulations to global certifications,
+              </span>{" "}
+              we prepare you to outsmart cybercriminals and protect what matters
               most.
             </p>
           </div>
 
           {/* What You'll Learn Section */}
           <div className="mb-16">
-            <h3 className="text-3xl font-bold text-white mb-8 text-center">
-              What You'll Learn
+            <h3 className="text-2xl md:text-3xl font-black text-white mb-8 text-center leading-tight">
+              <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent animate-slide-in-left hover:animate-text-glow transition-all duration-500">
+                What You'll Learn
+              </span>
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-6">
@@ -110,8 +120,10 @@ const AcademyPage: React.FC = () => {
 
           {/* Hands-On Labs Section */}
           <div className="mb-16">
-            <h3 className="text-3xl font-bold text-white mb-8 text-center">
-              Hands-On Labs & Real-World Simulations
+            <h3 className="text-2xl md:text-3xl font-black text-white mb-8 text-center leading-tight">
+              <span className="bg-gradient-to-r from-white via-purple-100 to-white bg-clip-text text-transparent animate-slide-in-left hover:animate-text-glow transition-all duration-500">
+                Hands-On Labs & Real-World Simulations
+              </span>
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="bg-gradient-to-br from-blue-900/20 to-blue-800/20 backdrop-blur-sm border border-blue-700/30 rounded-xl p-6">
@@ -159,8 +171,10 @@ const AcademyPage: React.FC = () => {
 
           {/* Certification Section */}
           <div className="mb-16">
-            <h3 className="text-3xl font-bold text-white mb-8 text-center">
-              Certification-Aligned Training
+            <h3 className="text-2xl md:text-3xl font-black text-white mb-8 text-center leading-tight">
+              <span className="bg-gradient-to-r from-white via-yellow-100 to-white bg-clip-text text-transparent animate-slide-in-left hover:animate-text-glow transition-all duration-500">
+                Certification-Aligned Training
+              </span>
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-6 text-center">
@@ -208,8 +222,10 @@ const AcademyPage: React.FC = () => {
 
           {/* Why Choose Us Section */}
           <div className="mb-16">
-            <h3 className="text-3xl font-bold text-white mb-8 text-center">
-              Why Choose CyberTech Experts Academy?
+            <h3 className="text-2xl md:text-3xl font-black text-white mb-8 text-center leading-tight">
+              <span className="bg-gradient-to-r from-white via-green-100 to-white bg-clip-text text-transparent animate-slide-in-left hover:animate-text-glow transition-all duration-500">
+                Why Choose CyberTech Experts Academy?
+              </span>
             </h3>
             <div className="grid md:grid-cols-2 gap-8">
               <div className="space-y-4">
@@ -240,12 +256,17 @@ const AcademyPage: React.FC = () => {
                 </div>
               </div>
               <div className="bg-gradient-to-br from-blue-900/20 to-purple-900/20 backdrop-blur-sm border border-blue-700/30 rounded-xl p-8">
-                <h4 className="text-2xl font-bold text-white mb-4">
-                  🚀 Start Your Cybersecurity Journey Today
+                <h4 className="text-2xl font-black text-white mb-4 leading-tight">
+                  <span className="bg-gradient-to-r from-white via-orange-100 to-white bg-clip-text text-transparent animate-slide-in-left hover:animate-text-glow transition-all duration-500">
+                    🚀 Start Your Cybersecurity Journey Today
+                  </span>
                 </h4>
-                <p className="text-gray-300 mb-6">
-                  Join CyberTech Experts Academy and gain the skills to defend
-                  businesses, stop attacks, and build a future-proof career.
+                <p className="text-gray-200 mb-6 font-light tracking-wide">
+                  <span className="text-orange-300 font-medium">
+                    Join CyberTech Experts Academy
+                  </span>{" "}
+                  and gain the skills to defend businesses, stop attacks, and
+                  build a future-proof career.
                 </p>
                 <button
                   onClick={() => setIsEnrollDialogOpen(true)}

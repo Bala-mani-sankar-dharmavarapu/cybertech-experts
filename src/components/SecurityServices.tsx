@@ -35,13 +35,21 @@ const SecurityServices: React.FC = () => {
     <section className="py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center space-y-8 mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-white">
-            Manage Security Services
+          <h2 className="text-4xl md:text-5xl font-black text-white leading-tight">
+            <span className="bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent animate-slide-in-left hover:animate-text-glow transition-all duration-500">
+              Manage Security
+            </span>
+            <br />
+            <span className="text-blue-400 drop-shadow-lg animate-fade-in-up hover:animate-text-glow transition-all duration-500">
+              Services
+            </span>
           </h2>
-          <p className="text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed">
-            Our managed security services provide comprehensive protection with
-            round-the-clock monitoring, threat detection, and rapid response
-            capabilities to keep your business secure.
+          <p className="text-gray-200 text-lg max-w-3xl mx-auto leading-relaxed font-light tracking-wide">
+            <span className="text-blue-300 font-medium">
+              Our managed security services provide comprehensive protection
+            </span>{" "}
+            with round-the-clock monitoring, threat detection, and rapid
+            response capabilities to keep your business secure.
           </p>
         </div>
 

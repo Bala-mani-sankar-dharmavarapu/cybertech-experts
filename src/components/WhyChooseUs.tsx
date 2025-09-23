@@ -27,12 +27,18 @@ const WhyChooseUs: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-8">
-            <div className="space-y-4">
-              <h2 className="text-accent-400 text-xl font-semibold tracking-wide uppercase">
+            <div className="space-y-6">
+              <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 text-xl font-bold tracking-wider uppercase">
                 WHY CHOOSE CYBER TECH EXPERTS
               </h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-white">
-                We Protect You From Cyber Attacks
+              <h3 className="text-3xl md:text-4xl font-black text-white leading-tight">
+                <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent animate-slide-in-left hover:animate-text-glow transition-all duration-500">
+                  We Protect You From
+                </span>
+                <br />
+                <span className="text-red-400 drop-shadow-lg animate-fade-in-up hover:animate-text-glow transition-all duration-500">
+                  Cyber Attacks
+                </span>
               </h3>
             </div>
 

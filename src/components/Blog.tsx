@@ -41,8 +41,14 @@ const Blog: React.FC = () => {
         <div className="grid lg:grid-cols-4 gap-12">
           {/* Left Content */}
           <div className="lg:col-span-1">
-            <h2 className="text-3xl font-bold text-white mb-8">
-              Resources & Insights
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-8 leading-tight">
+              <span className="bg-gradient-to-r from-white via-purple-100 to-white bg-clip-text text-transparent animate-slide-in-left hover:animate-text-glow transition-all duration-500">
+                Resources &
+              </span>
+              <br />
+              <span className="text-purple-400 drop-shadow-lg animate-fade-in-up hover:animate-text-glow transition-all duration-500">
+                Insights
+              </span>
             </h2>
           </div>
 

@@ -81,6 +81,11 @@ module.exports = {
       animation: {
         float: "float 6s ease-in-out infinite",
         glow: "glow 2s ease-in-out infinite alternate",
+        "gradient-shift": "gradient-shift 3s ease-in-out infinite",
+        "text-glow": "text-glow 2s ease-in-out infinite alternate",
+        "fade-in-up": "fade-in-up 0.8s ease-out",
+        "slide-in-left": "slide-in-left 0.8s ease-out",
+        "slide-in-right": "slide-in-right 0.8s ease-out",
       },
       keyframes: {
         float: {
@@ -90,6 +95,29 @@ module.exports = {
         glow: {
           "0%": { boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)" },
           "100%": { boxShadow: "0 0 30px rgba(59, 130, 246, 0.8)" },
+        },
+        "gradient-shift": {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
+        "text-glow": {
+          "0%": { textShadow: "0 0 10px rgba(59, 130, 246, 0.5)" },
+          "100%": {
+            textShadow:
+              "0 0 20px rgba(59, 130, 246, 0.8), 0 0 30px rgba(147, 51, 234, 0.6)",
+          },
+        },
+        "fade-in-up": {
+          "0%": { opacity: "0", transform: "translateY(30px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "slide-in-left": {
+          "0%": { opacity: "0", transform: "translateX(-30px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        "slide-in-right": {
+          "0%": { opacity: "0", transform: "translateX(30px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
         },
       },
     },

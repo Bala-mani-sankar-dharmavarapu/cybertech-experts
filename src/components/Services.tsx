@@ -31,17 +31,29 @@ const Services: React.FC = () => {
     <section id="services" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Top Center Header */}
-        <div className="text-center space-y-6 mb-16">
-          <h2 className="text-accent-400 text-xl font-semibold tracking-wide uppercase">
+        <div className="text-center space-y-8 mb-20">
+          <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 text-xl font-bold tracking-wider uppercase">
             OUR SERVICES AT A GLANCE
           </h2>
-          <h3 className="text-4xl md:text-5xl font-bold text-white">
-            Comprehensive Cybersecurity Solutions
+          <h3 className="text-4xl md:text-5xl font-black text-white leading-tight">
+            <span className="bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent animate-slide-in-left hover:animate-text-glow transition-all duration-500">
+              Comprehensive
+            </span>
+            <br />
+            <span className="text-blue-400 drop-shadow-lg animate-fade-in-up hover:animate-text-glow transition-all duration-500">
+              Cybersecurity
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent animate-slide-in-right hover:animate-text-glow transition-all duration-500">
+              Solutions
+            </span>
           </h3>
-          <p className="text-gray-300 text-lg max-w-4xl mx-auto leading-relaxed">
-            From phishing simulations to incident response, we provide tailored
-            cybersecurity solutions to protect your organization against modern
-            threats.
+          <p className="text-gray-200 text-lg max-w-4xl mx-auto leading-relaxed font-light tracking-wide">
+            <span className="text-blue-300 font-medium">
+              From phishing simulations to incident response,
+            </span>{" "}
+            we provide tailored cybersecurity solutions to protect your
+            organization against modern threats.
           </p>
         </div>
 

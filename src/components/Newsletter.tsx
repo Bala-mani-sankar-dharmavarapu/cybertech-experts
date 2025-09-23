@@ -30,14 +30,20 @@ const Newsletter: React.FC = () => {
     <section id="contact" className="py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto text-center">
         <div className="space-y-8">
-          <div className="space-y-4">
-            <h2 className="text-accent-400 text-xl font-semibold tracking-wide uppercase">
+          <div className="space-y-6">
+            <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 text-xl font-bold tracking-wider uppercase">
               CONTACT US
             </h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-white">
-              Get Started with Cyber Tech Experts
+            <h3 className="text-3xl md:text-4xl font-black text-white leading-tight">
+              <span className="bg-gradient-to-r from-white via-cyan-100 to-white bg-clip-text text-transparent animate-slide-in-left hover:animate-text-glow transition-all duration-500">
+                Get Started with
+              </span>
+              <br />
+              <span className="text-cyan-400 drop-shadow-lg animate-fade-in-up hover:animate-text-glow transition-all duration-500">
+                Cyber Tech Experts
+              </span>
             </h3>
-            <div className="text-gray-300 text-lg space-y-2">
+            <div className="text-gray-200 text-lg space-y-2 font-light tracking-wide">
               <p>📧 Email: info@cybertechexperts.com</p>
               <p>📞 Phone: +91-XXXXXXXXXX</p>
             </div>

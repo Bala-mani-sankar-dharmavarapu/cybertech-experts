@@ -46,16 +46,24 @@ const CaseStudies: React.FC = () => {
     <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900/50 to-gray-800/50">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center space-y-4 mb-12">
-          <h2 className="text-accent-400 text-xl font-semibold tracking-wide uppercase">
+        <div className="text-center space-y-6 mb-12">
+          <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400 text-xl font-bold tracking-wider uppercase">
             PROVEN RESULTS
           </h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-white">
-            Real Impact, Real Results
+          <h3 className="text-3xl md:text-4xl font-black text-white leading-tight">
+            <span className="bg-gradient-to-r from-white via-yellow-100 to-white bg-clip-text text-transparent animate-slide-in-left hover:animate-text-glow transition-all duration-500">
+              Real Impact,
+            </span>
+            <br />
+            <span className="text-yellow-400 drop-shadow-lg animate-fade-in-up hover:animate-text-glow transition-all duration-500">
+              Real Results
+            </span>
           </h3>
-          <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-            Our clients see measurable improvements in their cybersecurity
-            posture through our comprehensive solutions.
+          <p className="text-gray-200 text-lg max-w-3xl mx-auto leading-relaxed font-light tracking-wide">
+            <span className="text-yellow-300 font-medium">
+              Our clients see measurable improvements
+            </span>{" "}
+            in their cybersecurity posture through our comprehensive solutions.
           </p>
         </div>
 

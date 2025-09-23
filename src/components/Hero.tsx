@@ -10,19 +10,38 @@ const Hero: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-6 lg:space-y-8">
-            <div className="space-y-4">
+            <div className="space-y-6">
               {/* <h2 className="text-accent-400 text-xl font-semibold tracking-wide uppercase">
                 CYBER TECH EXPERTS
               </h2> */}
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight">
-                STRONGER SECURITY. SMARTER BUSINESS.
-              </h1>
-              <p className="text-gray-300 text-lg leading-relaxed max-w-lg">
-                Next-Gen Cyber Defense. Built for Modern Enterprises. From
-                phishing and malware to advanced persistent threats, attackers
-                are smarter than ever. At Cyber Tech Experts, our intelligent
-                cybersecurity solutions are designed around your business needs
-                providing adaptive, scalable protection that grows with you.
+              <div className="space-y-4">
+                <h1 className="text-3xl md:text-4xl lg:text-6xl font-black leading-tight">
+                  <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_200%] hover:animate-text-glow transition-all duration-500">
+                    STRONGER
+                  </span>
+                  <br />
+                  <span className="text-white drop-shadow-2xl animate-fade-in-up hover:animate-text-glow transition-all duration-500">
+                    SECURITY.
+                  </span>
+                  <br />
+                  <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_200%] hover:animate-text-glow transition-all duration-500">
+                    SMARTER
+                  </span>
+                  <br />
+                  <span className="text-white drop-shadow-2xl animate-fade-in-up hover:animate-text-glow transition-all duration-500">
+                    BUSINESS.
+                  </span>
+                </h1>
+              </div>
+              <p className="text-gray-200 text-lg leading-relaxed max-w-2xl font-light tracking-wide">
+                <span className="text-blue-300 font-medium">
+                  Next-Gen Cyber Defense.
+                </span>{" "}
+                Built for Modern Enterprises. From phishing and malware to
+                advanced persistent threats, attackers are smarter than ever. At
+                Cyber Tech Experts, our intelligent cybersecurity solutions are
+                designed around your business needs providing adaptive, scalable
+                protection that grows with you.
               </p>
             </div>
 

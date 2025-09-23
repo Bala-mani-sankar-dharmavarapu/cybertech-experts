@@ -10,16 +10,25 @@ const Academy: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         {/* Header Section - Centered */}
         <div className="text-center mb-8.5">
-          <h2 className="text-accent-400 text-xl font-semibold tracking-wide uppercase mb-4">
+          <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400 text-xl font-bold tracking-wider uppercase mb-6">
             CYBERSECURITY ACADEMY
           </h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Professional Training Programs
+          <h3 className="text-3xl md:text-4xl font-black text-white mb-8 leading-tight">
+            <span className="bg-gradient-to-r from-white via-green-100 to-white bg-clip-text text-transparent animate-slide-in-left hover:animate-text-glow transition-all duration-500">
+              Professional
+            </span>
+            <br />
+            <span className="text-green-400 drop-shadow-lg animate-fade-in-up hover:animate-text-glow transition-all duration-500">
+              Training Programs
+            </span>
           </h3>
-          <p className="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto mb-12">
-            Enhance your cybersecurity skills with our comprehensive training
-            programs. From beginner to advanced levels, we offer hands-on
-            training that prepares you for real-world security challenges.
+          <p className="text-gray-200 text-lg leading-relaxed max-w-3xl mx-auto mb-12 font-light tracking-wide">
+            <span className="text-green-300 font-medium">
+              Enhance your cybersecurity skills
+            </span>{" "}
+            with our comprehensive training programs. From beginner to advanced
+            levels, we offer hands-on training that prepares you for real-world
+            security challenges.
           </p>
 
           {/* Academy Stats */}
