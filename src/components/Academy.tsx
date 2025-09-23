@@ -31,7 +31,7 @@ const Academy: React.FC = () => {
                     <Users className="h-5 w-5 text-white" />
                   </div>
                   <div>
-                    <p className="text-white font-semibold text-lg">500+</p>
+                    <p className="text-white font-semibold text-lg">100+</p>
                     <p className="text-gray-400 text-sm">Students Trained</p>
                   </div>
                 </div>

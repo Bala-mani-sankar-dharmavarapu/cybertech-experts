@@ -8,6 +8,10 @@ export interface Service {
   features?: string[];
   benefits?: string[];
   useCases?: string[];
+  processFlow?: string[];
+  deliverables?: string[];
+  scenarios?: string[];
+  measurements?: string[];
 }
 
 export interface BlogPost {

@@ -11,6 +11,10 @@ import {
   Cloud,
   Globe,
   Lock,
+  PlayCircle,
+  FileText,
+  AlertTriangle,
+  BarChart3,
 } from "lucide-react";
 import { services } from "../utils/services";
 import ContactFormDialog from "./ContactFormDialog";
@@ -146,6 +150,100 @@ const ServiceDetailPage: React.FC = () => {
             </div>
           )}
         </div>
+
+        {/* Additional Sections for Process Flow and Deliverables */}
+        {(service.processFlow || service.deliverables) && (
+          <div className="grid lg:grid-cols-2 gap-8 mb-16">
+            {/* Process Flow */}
+            {service.processFlow && (
+              <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-8">
+                <div className="flex items-center space-x-3 mb-6">
+                  <PlayCircle className="h-6 w-6 text-orange-400" />
+                  <h3 className="text-xl font-semibold text-white">
+                    How It Works
+                  </h3>
+                </div>
+                <div className="space-y-4">
+                  {service.processFlow.map((step, index) => (
+                    <div key={index} className="flex items-start space-x-4">
+                      <div className="flex-shrink-0 w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white font-semibold text-sm">
+                        {index + 1}
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-gray-300 leading-relaxed">{step}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Deliverables */}
+            {service.deliverables && (
+              <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-8">
+                <div className="flex items-center space-x-3 mb-6">
+                  <FileText className="h-6 w-6 text-cyan-400" />
+                  <h3 className="text-xl font-semibold text-white">
+                    Deliverables
+                  </h3>
+                </div>
+                <ul className="space-y-4">
+                  {service.deliverables.map((deliverable, index) => (
+                    <li key={index} className="flex items-start space-x-3">
+                      <CheckCircle className="h-5 w-5 text-cyan-400 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-300">{deliverable}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Additional Sections for Scenarios and Measurements */}
+        {(service.scenarios || service.measurements) && (
+          <div className="grid lg:grid-cols-2 gap-8 mb-16">
+            {/* Scenarios */}
+            {service.scenarios && (
+              <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-8">
+                <div className="flex items-center space-x-3 mb-6">
+                  <AlertTriangle className="h-6 w-6 text-red-400" />
+                  <h3 className="text-xl font-semibold text-white">
+                    Common Scenarios
+                  </h3>
+                </div>
+                <ul className="space-y-4">
+                  {service.scenarios.map((scenario, index) => (
+                    <li key={index} className="flex items-start space-x-3">
+                      <CheckCircle className="h-5 w-5 text-red-400 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-300">{scenario}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Measurements */}
+            {service.measurements && (
+              <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-8">
+                <div className="flex items-center space-x-3 mb-6">
+                  <BarChart3 className="h-6 w-6 text-green-400" />
+                  <h3 className="text-xl font-semibold text-white">
+                    What We Measure
+                  </h3>
+                </div>
+                <ul className="space-y-4">
+                  {service.measurements.map((measurement, index) => (
+                    <li key={index} className="flex items-start space-x-3">
+                      <CheckCircle className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-300">{measurement}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Call to Action */}
         <div className="text-center bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-sm border border-blue-500/30 rounded-2xl p-12">

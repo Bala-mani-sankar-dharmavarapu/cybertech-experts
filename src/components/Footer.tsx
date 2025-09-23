@@ -1,5 +1,7 @@
 import React from "react";
-import { Facebook, Linkedin, Twitter } from "lucide-react";
+import { Mail, Linkedin, Instagram } from "lucide-react";
+import { Link } from "react-router-dom";
+import { services } from "../utils/services";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -7,7 +9,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-gradient-to-br from-gray-900 to-gray-800 border-t border-gray-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8">
           {/* Company Info */}
           <div className="space-y-6">
             <div className="flex items-center space-x-2">
@@ -28,101 +30,70 @@ const Footer: React.FC = () => {
             <div className="flex space-x-4">
               <button
                 className="text-gray-400 hover:text-blue-400 transition-colors duration-300"
-                aria-label="Follow us on Facebook"
+                aria-label="Contact us via email"
               >
-                <Facebook className="h-5 w-5" />
+                <Mail className="h-5 w-5" />
               </button>
-              <button
+              <a
+                href="https://www.linkedin.com/company/cybertechexpertsofficial/about/?viewAsMember=true"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-blue-400 transition-colors duration-300"
                 aria-label="Follow us on LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
-              </button>
-              <button
+              </a>
+              <a
+                href="https://www.instagram.com/cyber_tech_experts?igsh=dDc3MnM0ZnVndWR3&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-blue-400 transition-colors duration-300"
-                aria-label="Follow us on Twitter"
+                aria-label="Follow us on Instagram"
               >
-                <Twitter className="h-5 w-5" />
-              </button>
+                <Instagram className="h-5 w-5" />
+              </a>
             </div>
           </div>
 
           {/* Our Services */}
-          <div className="space-y-4">
-            <h3 className="text-white font-semibold text-lg">Our Services</h3>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="#about"
-                  className="text-gray-300 hover:text-blue-400 transition-colors duration-300"
-                >
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#services"
-                  className="text-gray-300 hover:text-blue-400 transition-colors duration-300"
-                >
-                  Data & Business
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#services"
-                  className="text-gray-300 hover:text-blue-400 transition-colors duration-300"
-                >
-                  UI/UX Design
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#blog"
-                  className="text-gray-300 hover:text-blue-400 transition-colors duration-300"
-                >
-                  White Papers
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Navigation */}
-          <div className="space-y-4">
-            <h3 className="text-white font-semibold text-lg">Navigation</h3>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="#services"
-                  className="text-gray-300 hover:text-blue-400 transition-colors duration-300"
-                >
-                  Cyber Security
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#services"
-                  className="text-gray-300 hover:text-blue-400 transition-colors duration-300"
-                >
-                  Cloud Computing
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#services"
-                  className="text-gray-300 hover:text-blue-400 transition-colors duration-300"
-                >
-                  Infrastructure Security
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#blog"
-                  className="text-gray-300 hover:text-blue-400 transition-colors duration-300"
-                >
-                  Blog and News
-                </a>
-              </li>
-            </ul>
+          <div className="space-y-6">
+            <h3 className="text-white font-semibold text-lg text-center">
+              Our Services
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-3">
+                {services.slice(0, 3).map((service) => (
+                  <div key={service.id} className="group">
+                    <Link
+                      to={
+                        service.urlName === "cybersecurity-training"
+                          ? "/academy"
+                          : `/service/${service.urlName}`
+                      }
+                      className="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-sm leading-relaxed block"
+                    >
+                      {service.title}
+                    </Link>
+                  </div>
+                ))}
+              </div>
+              <div className="space-y-3">
+                {services.slice(3, 6).map((service) => (
+                  <div key={service.id} className="group">
+                    <Link
+                      to={
+                        service.urlName === "cybersecurity-training"
+                          ? "/academy"
+                          : `/service/${service.urlName}`
+                      }
+                      className="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-sm leading-relaxed block"
+                    >
+                      {service.title}
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
