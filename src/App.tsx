@@ -19,6 +19,8 @@ import Footer from "./components/Footer";
 import ServiceDetailPage from "./components/ServiceDetailPage";
 import AcademyPage from "./components/AcademyPage";
 import WhyChooseUsPage from "./components/WhyChooseUsPage";
+import WhatsAppButton from "./components/WhatsAppButton";
+import CareerExpertDialog from "./components/CareerExpertDialog";
 
 // Component to handle scroll restoration
 function ScrollToTop() {
@@ -83,6 +85,8 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <WhatsAppButton />
+        <CareerExpertDialog />
       </div>
     </Router>
   );

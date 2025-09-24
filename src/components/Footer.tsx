@@ -2,6 +2,7 @@ import React from "react";
 import { Mail, Linkedin, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 import { services } from "../utils/services";
+import { email, linkedinLink, instaLink } from "../utils/info";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -28,14 +29,15 @@ const Footer: React.FC = () => {
               protection services.
             </p>
             <div className="flex space-x-4">
-              <button
+              <a
+                href={`mailto:${email}`}
                 className="text-gray-400 hover:text-blue-400 transition-colors duration-300"
                 aria-label="Contact us via email"
               >
                 <Mail className="h-5 w-5" />
-              </button>
+              </a>
               <a
-                href="https://www.linkedin.com/company/cybertechexpertsofficial/about/?viewAsMember=true"
+                href={linkedinLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-blue-400 transition-colors duration-300"
@@ -44,7 +46,7 @@ const Footer: React.FC = () => {
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                href="https://www.instagram.com/cyber_tech_experts?igsh=dDc3MnM0ZnVndWR3&utm_source=qr"
+                href={instaLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-blue-400 transition-colors duration-300"

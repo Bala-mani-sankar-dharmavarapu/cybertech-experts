@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Mail, User, Phone } from "lucide-react";
+import { email, phoneNumber } from "../utils/info";
 
 const Newsletter: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -44,8 +45,8 @@ const Newsletter: React.FC = () => {
               </span>
             </h3>
             <div className="text-gray-200 text-lg space-y-2 font-light tracking-wide">
-              <p>📧 Email: info@cybertechexperts.com</p>
-              <p>📞 Phone: +91-XXXXXXXXXX</p>
+              <p>📧 Email: {email}</p>
+              <p>📞 Phone: {phoneNumber}</p>
             </div>
           </div>
 

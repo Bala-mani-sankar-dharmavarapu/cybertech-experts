@@ -249,60 +249,96 @@ const ContactFormDialog: React.FC<ContactFormDialogProps> = ({
             </div>
           </div>
 
-          {/* Company */}
-          <div>
-            <label
-              htmlFor="company"
-              className="block text-sm font-medium text-gray-300 mb-2"
-            >
-              Company or College
-            </label>
-            <div className="relative">
-              <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-              <input
-                type="text"
-                id="company"
-                name="company"
-                value={formData.company}
-                onChange={handleInputChange}
-                className="w-full pl-10 pr-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                placeholder="Enter your company or college name"
-              />
+          {/* Company and Interest/Service Selection - Same row for enroll form */}
+          {formType === "enroll" ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label
+                  htmlFor="company"
+                  className="block text-sm font-medium text-gray-300 mb-2"
+                >
+                  Company or College
+                </label>
+                <div className="relative">
+                  <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
+                    className="w-full pl-10 pr-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    placeholder="Enter your company or college name"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  htmlFor="interest"
+                  className="block text-sm font-medium text-gray-300 mb-2"
+                >
+                  Training Interest
+                </label>
+                <select
+                  id="interest"
+                  name="interest"
+                  value={formData.interest}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                >
+                  <option value="">Select an option</option>
+                  <option value="security-plus">CompTIA Security+</option>
+                  <option value="pentest-plus">CompTIA PenTest+</option>
+                  <option value="ceh">Certified Ethical Hacker (CEH)</option>
+                  <option value="ejpt">eJPT</option>
+                  <option value="oscp">OSCP</option>
+                  <option value="general">
+                    General Cybersecurity Training
+                  </option>
+                </select>
+              </div>
             </div>
-          </div>
+          ) : (
+            <>
+              {/* Company */}
+              <div>
+                <label
+                  htmlFor="company"
+                  className="block text-sm font-medium text-gray-300 mb-2"
+                >
+                  Company or College
+                </label>
+                <div className="relative">
+                  <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
+                    className="w-full pl-10 pr-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    placeholder="Enter your company or college name"
+                  />
+                </div>
+              </div>
 
-          {/* Interest/Service Selection for specific form types */}
-          {(formType === "enroll" || formType === "quote") && (
-            <div>
-              <label
-                htmlFor="interest"
-                className="block text-sm font-medium text-gray-300 mb-2"
-              >
-                {formType === "enroll"
-                  ? "Training Interest"
-                  : "Service Interest"}
-              </label>
-              <select
-                id="interest"
-                name="interest"
-                value={formData.interest}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-              >
-                <option value="">Select an option</option>
-                {formType === "enroll" ? (
-                  <>
-                    <option value="security-plus">CompTIA Security+</option>
-                    <option value="pentest-plus">CompTIA PenTest+</option>
-                    <option value="ceh">Certified Ethical Hacker (CEH)</option>
-                    <option value="ejpt">eJPT</option>
-                    <option value="oscp">OSCP</option>
-                    <option value="general">
-                      General Cybersecurity Training
-                    </option>
-                  </>
-                ) : (
-                  <>
+              {/* Service Interest for quote form */}
+              {formType === "quote" && (
+                <div>
+                  <label
+                    htmlFor="interest"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
+                    Service Interest
+                  </label>
+                  <select
+                    id="interest"
+                    name="interest"
+                    value={formData.interest}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  >
+                    <option value="">Select an option</option>
                     <option value="penetration-testing">
                       Penetration Testing
                     </option>
@@ -317,10 +353,10 @@ const ContactFormDialog: React.FC<ContactFormDialogProps> = ({
                     <option value="compliance">
                       Compliance & Risk Management
                     </option>
-                  </>
-                )}
-              </select>
-            </div>
+                  </select>
+                </div>
+              )}
+            </>
           )}
 
           {/* Message */}
