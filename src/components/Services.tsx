@@ -28,10 +28,18 @@ const Services: React.FC = () => {
   };
 
   return (
-    <section id="services" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section
+      id="services"
+      className="py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+    >
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900/30 to-gray-800/30"></div>
+      <div className="absolute top-1/3 left-1/3 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/3 right-1/3 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl"></div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Top Center Header */}
-        <div className="text-center space-y-8 mb-20">
+        <div className="text-center space-y-6 mb-16">
           <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 text-xl font-bold tracking-wider uppercase">
             OUR SERVICES AT A GLANCE
           </h2>
@@ -59,7 +67,7 @@ const Services: React.FC = () => {
 
         {/* Services Grid at Bottom */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service) => (
+          {services.map((service, index) => (
             <div
               key={service.id}
               onClick={() => {
@@ -69,23 +77,27 @@ const Services: React.FC = () => {
                   navigate(`/service/${service.urlName}`);
                 }
               }}
-              className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-300 group cursor-pointer"
+              className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 cursor-pointer transform hover:scale-105 hover:-translate-y-2 relative overflow-hidden"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="space-y-4">
+              {/* Card Background Effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+              <div className="space-y-4 relative z-10">
                 {/* Icon */}
                 <div className="relative">
-                  <div className="p-3 bg-gradient-secondary rounded-lg w-fit group-hover:scale-110 transition-transform duration-300">
+                  <div className="p-3 bg-gradient-secondary rounded-xl w-fit group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
                     {getIcon(service.icon)}
                   </div>
-                  <div className="absolute inset-0 bg-gradient-secondary/20 rounded-lg blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-secondary/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
 
                 {/* Content */}
                 <div className="space-y-3">
-                  <h4 className="text-white font-semibold text-lg group-hover:text-blue-400 transition-colors duration-300">
+                  <h4 className="text-white font-bold text-lg group-hover:text-blue-400 transition-colors duration-300">
                     {service.title}
                   </h4>
-                  <p className="text-gray-300 text-sm leading-relaxed">
+                  <p className="text-gray-300 text-sm leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
                     {service.description}
                   </p>
                 </div>
@@ -100,10 +112,12 @@ const Services: React.FC = () => {
                       navigate(`/service/${service.urlName}`);
                     }
                   }}
-                  className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors duration-300 group"
+                  className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-all duration-300 group/btn"
                 >
-                  <span className="text-sm font-medium">Learn More</span>
-                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+                  <span className="text-sm font-semibold group-hover/btn:translate-x-1 transition-transform duration-300">
+                    Learn More
+                  </span>
+                  <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-2 transition-transform duration-300" />
                 </button>
               </div>
             </div>

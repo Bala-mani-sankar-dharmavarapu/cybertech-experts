@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { CheckCircle, ArrowLeft } from "lucide-react";
+import { CheckCircle, ArrowLeft, Download } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import ContactFormDialog from "./ContactFormDialog";
 
@@ -11,6 +11,15 @@ const AcademyPage: React.FC = () => {
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
   }, []);
+
+  const handleDownloadCurriculum = () => {
+    const link = document.createElement("a");
+    link.href = "/CyberTechExperts-Curriculum.pdf";
+    link.download = "CyberTechExperts-Curriculum.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-dark">
@@ -42,11 +51,11 @@ const AcademyPage: React.FC = () => {
             </h1>
             <h2 className="text-3xl md:text-4xl font-black text-white mb-8 leading-tight">
               <span className="bg-gradient-to-r from-white via-green-100 to-white bg-clip-text text-transparent animate-slide-in-left hover:animate-text-glow transition-all duration-500">
-                Train Like a Hacker.
+                Master the Art of Cyber Defense
               </span>
               <br />
               <span className="text-green-400 drop-shadow-lg animate-fade-in-up hover:animate-text-glow transition-all duration-500">
-                Defend Like a Pro.
+                Build Your Future in Cybersecurity
               </span>
             </h2>
             <p className="text-gray-200 text-lg leading-relaxed max-w-4xl mx-auto font-light tracking-wide">
@@ -56,6 +65,31 @@ const AcademyPage: React.FC = () => {
               we prepare you to outsmart cybercriminals and protect what matters
               most.
             </p>
+          </div>
+
+          {/* Download Curriculum Section */}
+          <div className="text-center mb-16">
+            <div className="bg-gradient-to-br from-green-900/20 to-blue-900/20 backdrop-blur-sm border border-green-700/30 rounded-xl p-8 max-w-2xl mx-auto">
+              <h3 className="text-2xl font-black text-white mb-4 leading-tight">
+                <span className="bg-gradient-to-r from-white via-green-100 to-white bg-clip-text text-transparent">
+                  📚 Download Our Complete Curriculum
+                </span>
+              </h3>
+              <p className="text-gray-200 mb-6 font-light tracking-wide">
+                <span className="text-green-300 font-medium">
+                  Get the full curriculum overview
+                </span>{" "}
+                and see exactly what you'll learn in our comprehensive
+                cybersecurity training programs.
+              </p>
+              <button
+                onClick={handleDownloadCurriculum}
+                className="group bg-gradient-secondary text-white px-8 py-4 rounded-lg font-semibold hover:opacity-90 transition-all duration-300 flex items-center space-x-3 mx-auto"
+              >
+                <Download className="h-5 w-5" />
+                <span>Download Curriculum PDF</span>
+              </button>
+            </div>
           </div>
 
           {/* What You'll Learn Section */}

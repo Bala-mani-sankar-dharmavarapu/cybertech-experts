@@ -43,7 +43,7 @@ const CaseStudies: React.FC = () => {
   };
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900/50 to-gray-800/50">
+    <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900/50 to-gray-800/50">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center space-y-6 mb-12">

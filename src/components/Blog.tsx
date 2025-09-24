@@ -32,63 +32,67 @@ const Blog: React.FC = () => {
       Monitor,
     };
     const IconComponent = icons[imageName] || User;
-    return <IconComponent className="h-16 w-16" />;
+    return <IconComponent className="h-12 w-12" />;
   };
 
   return (
-    <section id="blog" className="py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-4 gap-12">
-          {/* Left Content */}
-          <div className="lg:col-span-1">
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-8 leading-tight">
-              <span className="bg-gradient-to-r from-white via-purple-100 to-white bg-clip-text text-transparent animate-slide-in-left hover:animate-text-glow transition-all duration-500">
-                Resources &
-              </span>
-              <br />
-              <span className="text-purple-400 drop-shadow-lg animate-fade-in-up hover:animate-text-glow transition-all duration-500">
-                Insights
-              </span>
-            </h2>
-          </div>
+    <section
+      id="blog"
+      className="py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+    >
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900/30 to-gray-800/30"></div>
+      <div className="absolute top-1/3 left-1/3 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/3 right-1/3 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"></div>
 
-          {/* Blog Posts */}
-          <div className="lg:col-span-3">
-            <div className="grid md:grid-cols-3 gap-6">
-              {blogPosts.map((post) => (
-                <article
-                  key={post.id}
-                  className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl overflow-hidden hover:border-blue-500/50 transition-all duration-300 group"
-                >
-                  {/* Image */}
-                  <div className="relative h-48 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-                    <div className="text-blue-400 group-hover:scale-110 transition-transform duration-300">
-                      {getImageIcon(post.image)}
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Top Center Header */}
+        <div className="text-center space-y-6 mb-16">
+          <h2 className="text-3xl md:text-4xl font-black text-white leading-tight">
+            <span className="bg-gradient-to-r from-white via-purple-100 to-white bg-clip-text text-transparent animate-slide-in-left hover:animate-text-glow transition-all duration-500">
+              Resources &
+            </span>
+            <br />
+            <span className="text-purple-400 drop-shadow-lg animate-fade-in-up hover:animate-text-glow transition-all duration-500">
+              Insights
+            </span>
+          </h2>
+        </div>
 
-                  {/* Content */}
-                  <div className="p-6 space-y-4">
-                    <div className="flex items-center space-x-2">
-                      <span className="text-xs text-gray-400 bg-gray-700 px-2 py-1 rounded">
-                        {post.category}
-                      </span>
-                    </div>
+        {/* Blog Posts */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {blogPosts.map((post) => (
+            <article
+              key={post.id}
+              className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl overflow-hidden hover:border-blue-500/50 transition-all duration-300 group"
+            >
+              {/* Image */}
+              <div className="relative h-32 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
+                <div className="text-blue-400 group-hover:scale-110 transition-transform duration-300">
+                  {getImageIcon(post.image)}
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
 
-                    <h3 className="text-white font-semibold text-lg group-hover:text-blue-400 transition-colors duration-300 line-clamp-2">
-                      {post.title}
-                    </h3>
+              {/* Content */}
+              <div className="p-4 space-y-3">
+                <div className="flex items-center space-x-2">
+                  <span className="text-xs text-gray-400 bg-gray-700 px-2 py-1 rounded">
+                    {post.category}
+                  </span>
+                </div>
 
-                    <button className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors duration-300 group">
-                      <span className="text-sm font-medium">Read More</span>
-                      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-                    </button>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
+                <h3 className="text-white font-semibold text-base group-hover:text-blue-400 transition-colors duration-300 line-clamp-2">
+                  {post.title}
+                </h3>
+
+                <button className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors duration-300 group">
+                  <span className="text-xs font-medium">Read More</span>
+                  <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform duration-300" />
+                </button>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
