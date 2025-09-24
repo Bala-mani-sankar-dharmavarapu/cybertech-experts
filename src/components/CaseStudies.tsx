@@ -47,9 +47,9 @@ const CaseStudies: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center space-y-6 mb-12">
-          <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400 text-xl font-bold tracking-wider uppercase">
+          {/* <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400 text-xl font-bold tracking-wider uppercase">
             PROVEN RESULTS
-          </h2>
+          </h2> */}
           <h3 className="text-3xl md:text-4xl font-black text-white leading-tight">
             <span className="bg-gradient-to-r from-white via-yellow-100 to-white bg-clip-text text-transparent animate-slide-in-left hover:animate-text-glow transition-all duration-500">
               Real Impact,

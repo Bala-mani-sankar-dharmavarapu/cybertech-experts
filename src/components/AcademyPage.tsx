@@ -51,7 +51,7 @@ const AcademyPage: React.FC = () => {
             </h1>
             <h2 className="text-3xl md:text-4xl font-black text-white mb-8 leading-tight">
               <span className="bg-gradient-to-r from-white via-green-100 to-white bg-clip-text text-transparent animate-slide-in-left hover:animate-text-glow transition-all duration-500">
-                Master the Art of Cyber Defense
+                Master the Art of Cyber Strategy
               </span>
               <br />
               <span className="text-green-400 drop-shadow-lg animate-fade-in-up hover:animate-text-glow transition-all duration-500">
