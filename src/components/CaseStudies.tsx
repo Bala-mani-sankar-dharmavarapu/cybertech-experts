@@ -1,5 +1,5 @@
 import React from "react";
-import { TrendingDown, Shield, Award } from "lucide-react";
+import { TrendingDown, Shield } from "lucide-react";
 
 const CaseStudies: React.FC = () => {
   const caseStudies = [
@@ -20,21 +20,6 @@ const CaseStudies: React.FC = () => {
       icon: Shield,
       metric: "100+",
       metricLabel: "Domains Takedown",
-    },
-  ];
-
-  const testimonials = [
-    {
-      id: "1",
-      quote:
-        "Cyber Tech Experts transformed our employees into our strongest defense against phishing.",
-      author: "CTO, FinTech Company",
-    },
-    {
-      id: "2",
-      quote:
-        "Their takedown service saved our brand from multiple fraud attempts.",
-      author: "Head of Security, SaaS Firm",
     },
   ];
 
