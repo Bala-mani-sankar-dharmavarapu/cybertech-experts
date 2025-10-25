@@ -6,6 +6,7 @@ import ContactFormDialog from "./ContactFormDialog";
 const AcademyPage: React.FC = () => {
   const navigate = useNavigate();
   const [isEnrollDialogOpen, setIsEnrollDialogOpen] = useState(false);
+  const [isDownloadDialogOpen, setIsDownloadDialogOpen] = useState(false);
 
   useEffect(() => {
     // Scroll to top when component mounts
@@ -19,6 +20,10 @@ const AcademyPage: React.FC = () => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  };
+
+  const handleDownloadButtonClick = () => {
+    setIsDownloadDialogOpen(true);
   };
 
   return (
@@ -83,7 +88,7 @@ const AcademyPage: React.FC = () => {
                 cybersecurity training programs.
               </p>
               <button
-                onClick={handleDownloadCurriculum}
+                onClick={handleDownloadButtonClick}
                 className="group bg-gradient-secondary text-white px-8 py-4 rounded-lg font-semibold hover:opacity-90 transition-all duration-300 flex items-center space-x-3 mx-auto"
               >
                 <Download className="h-5 w-5" />
@@ -314,11 +319,19 @@ const AcademyPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Contact Form Dialog */}
+      {/* Enroll Dialog */}
       <ContactFormDialog
         isOpen={isEnrollDialogOpen}
         onClose={() => setIsEnrollDialogOpen(false)}
         formType="enroll"
+      />
+
+      {/* Download Curriculum Dialog */}
+      <ContactFormDialog
+        isOpen={isDownloadDialogOpen}
+        onClose={() => setIsDownloadDialogOpen(false)}
+        formType="download"
+        onSuccess={handleDownloadCurriculum}
       />
     </div>
   );

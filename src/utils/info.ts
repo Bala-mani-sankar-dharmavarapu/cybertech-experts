@@ -1,4 +1,4 @@
-export const email = "cybertechexperts5@gmail.com";
+export const email = "Services@cybertechexperts.org";
 export const phoneNumber = "+91 91212 21233";
 export const linkedinLink =
   "https://www.linkedin.com/company/cybertechexpertsofficial/about/?viewAsMember=true";

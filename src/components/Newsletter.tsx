@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Mail, User, Phone } from "lucide-react";
-import { email, phoneNumber } from "../utils/info";
+import { email, phoneNumber, watsappNumber } from "../utils/info";
 
 const Newsletter: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -23,8 +23,31 @@ const Newsletter: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
+
+    // Format the message for WhatsApp
+    const whatsappMessage =
+      `*New Contact Form Submission*%0A%0A` +
+      `*Name:* ${formData.firstName}%0A` +
+      `*Email:* ${formData.email}%0A` +
+      `*Phone:* ${formData.phone}%0A` +
+      `*Company:* ${formData.company}%0A` +
+      `*Message:* ${formData.message}`;
+
+    // Clean the phone number (remove spaces, dashes, and the + sign for the URL)
+    const cleanedNumber = watsappNumber.replace(/[\s\-+]/g, "");
+
+    // Open WhatsApp with pre-filled message
+    const whatsappURL = `https://wa.me/${cleanedNumber}?text=${whatsappMessage}`;
+    window.open(whatsappURL, "_blank");
+
+    // Reset form after submission
+    setFormData({
+      firstName: "",
+      email: "",
+      phone: "",
+      company: "",
+      message: "",
+    });
   };
 
   return (

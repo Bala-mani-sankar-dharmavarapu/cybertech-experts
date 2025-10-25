@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { X, Mail, Phone, User, MessageSquare, Building } from "lucide-react";
+import { watsappNumber } from "../utils/info";
 
 interface ContactFormDialogProps {
   isOpen: boolean;
   onClose: () => void;
   title?: string;
   subtitle?: string;
-  formType?: "enroll" | "contact" | "quote";
+  formType?: "enroll" | "contact" | "quote" | "download";
+  onSuccess?: () => void; // Callback function to execute after successful submission
 }
 
 interface FormData {
@@ -25,6 +27,7 @@ const ContactFormDialog: React.FC<ContactFormDialogProps> = ({
   title = "Get in Touch",
   subtitle = "We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
   formType = "contact",
+  onSuccess,
 }) => {
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
@@ -59,8 +62,52 @@ const ContactFormDialog: React.FC<ContactFormDialogProps> = ({
     setSubmitStatus("idle");
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      // Format the message for WhatsApp based on form type
+      let whatsappMessage = "";
+
+      if (formType === "enroll") {
+        whatsappMessage =
+          `*Academy Enrollment Request*%0A%0A` +
+          `*Name:* ${formData.firstName} ${formData.lastName}%0A` +
+          `*Email:* ${formData.email}%0A` +
+          `*Phone:* ${formData.phone || "Not provided"}%0A` +
+          `*Company/College:* ${formData.company || "Not provided"}%0A` +
+          `*Training Interest:* ${formData.interest || "Not specified"}%0A` +
+          `*Additional Info:* ${formData.message || "None"}`;
+      } else if (formType === "quote") {
+        whatsappMessage =
+          `*Service Quote Request*%0A%0A` +
+          `*Name:* ${formData.firstName} ${formData.lastName}%0A` +
+          `*Email:* ${formData.email}%0A` +
+          `*Phone:* ${formData.phone || "Not provided"}%0A` +
+          `*Company/College:* ${formData.company || "Not provided"}%0A` +
+          `*Service Interest:* ${formData.interest || "Not specified"}%0A` +
+          `*Message:* ${formData.message || "None"}`;
+      } else if (formType === "download") {
+        whatsappMessage =
+          `*Curriculum Download Request*%0A%0A` +
+          `*Name:* ${formData.firstName} ${formData.lastName}%0A` +
+          `*Email:* ${formData.email}%0A` +
+          `*Phone:* ${formData.phone || "Not provided"}%0A` +
+          `*Company/College:* ${formData.company || "Not provided"}%0A` +
+          `*Training Interest:* ${formData.interest || "Not specified"}%0A` +
+          `*Additional Info:* ${formData.message || "None"}`;
+      } else {
+        whatsappMessage =
+          `*Contact Form Submission*%0A%0A` +
+          `*Name:* ${formData.firstName} ${formData.lastName}%0A` +
+          `*Email:* ${formData.email}%0A` +
+          `*Phone:* ${formData.phone || "Not provided"}%0A` +
+          `*Company/College:* ${formData.company || "Not provided"}%0A` +
+          `*Message:* ${formData.message || "None"}`;
+      }
+
+      // Clean the phone number (remove spaces, dashes, and the + sign for the URL)
+      const cleanedNumber = watsappNumber.replace(/[\s\-+]/g, "");
+
+      // Open WhatsApp with pre-filled message
+      const whatsappURL = `https://wa.me/${cleanedNumber}?text=${whatsappMessage}`;
+      window.open(whatsappURL, "_blank");
 
       // Reset form
       setFormData({
@@ -74,6 +121,12 @@ const ContactFormDialog: React.FC<ContactFormDialogProps> = ({
       });
 
       setSubmitStatus("success");
+
+      // Call onSuccess callback if provided (e.g., for PDF download)
+      if (onSuccess) {
+        onSuccess();
+      }
+
       setTimeout(() => {
         setSubmitStatus("idle");
         onClose();
@@ -91,6 +144,8 @@ const ContactFormDialog: React.FC<ContactFormDialogProps> = ({
         return "Enroll in Academy";
       case "quote":
         return "Request a Quote";
+      case "download":
+        return "Download Curriculum";
       default:
         return title;
     }
@@ -102,6 +157,8 @@ const ContactFormDialog: React.FC<ContactFormDialogProps> = ({
         return "Join our cybersecurity academy and start your journey to becoming a certified security professional.";
       case "quote":
         return "Get a personalized quote for our cybersecurity services tailored to your organization's needs.";
+      case "download":
+        return "Please provide your details below to download our comprehensive cybersecurity curriculum PDF.";
       default:
         return subtitle;
     }
@@ -249,8 +306,8 @@ const ContactFormDialog: React.FC<ContactFormDialogProps> = ({
             </div>
           </div>
 
-          {/* Company and Interest/Service Selection - Same row for enroll form */}
-          {formType === "enroll" ? (
+          {/* Company and Interest/Service Selection - Same row for enroll/download form */}
+          {formType === "enroll" || formType === "download" ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label
@@ -365,7 +422,9 @@ const ContactFormDialog: React.FC<ContactFormDialogProps> = ({
               htmlFor="message"
               className="block text-sm font-medium text-gray-300 mb-2"
             >
-              {formType === "enroll" ? "Additional Information" : "Message"}
+              {formType === "enroll" || formType === "download"
+                ? "Additional Information"
+                : "Message"}
             </label>
             <div className="relative">
               <MessageSquare className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
@@ -377,7 +436,7 @@ const ContactFormDialog: React.FC<ContactFormDialogProps> = ({
                 rows={4}
                 className="w-full pl-10 pr-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
                 placeholder={
-                  formType === "enroll"
+                  formType === "enroll" || formType === "download"
                     ? "Tell us about your cybersecurity background and goals..."
                     : "Tell us about your security needs and how we can help..."
                 }
@@ -410,6 +469,8 @@ const ContactFormDialog: React.FC<ContactFormDialogProps> = ({
                     ? "Enroll Now"
                     : formType === "quote"
                     ? "Request Quote"
+                    : formType === "download"
+                    ? "Download PDF"
                     : "Send Message"}
                 </span>
               )}

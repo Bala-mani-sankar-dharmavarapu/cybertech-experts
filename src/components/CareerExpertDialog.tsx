@@ -72,7 +72,7 @@ const CareerExpertDialog: React.FC<CareerExpertDialogProps> = ({
         {/* Content */}
         <div className="pr-8">
           <h2 className="text-2xl font-bold text-gray-800 mb-2">
-            Talk to Our Career Expert
+            Talk to Our Expert
           </h2>
           <p className="text-gray-600 mb-6">We'd love to hear from you</p>
 
