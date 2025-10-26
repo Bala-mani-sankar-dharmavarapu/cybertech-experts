@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { services } from "../utils/services";
 import ContactFormDialog from "./ContactFormDialog";
+import SEO from "./SEO";
 
 const ServiceDetailPage: React.FC = () => {
   const { serviceName } = useParams<{ serviceName: string }>();
@@ -56,6 +57,11 @@ const ServiceDetailPage: React.FC = () => {
   if (!service) {
     return (
       <div className="min-h-screen bg-gradient-dark flex items-center justify-center">
+        <SEO
+          title="Service Not Found - CyberTech Experts"
+          description="The requested cybersecurity service could not be found."
+          url="/service/not-found"
+        />
         <div className="text-center">
           <h1 className="text-4xl font-bold text-white mb-4">
             Service Not Found
@@ -74,8 +80,32 @@ const ServiceDetailPage: React.FC = () => {
     );
   }
 
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.title,
+    description: service.detailedDescription || service.description,
+    provider: {
+      "@type": "Organization",
+      name: "CyberTech Experts",
+      url: "https://cybertechexperts.org",
+    },
+    areaServed: "Worldwide",
+    serviceType: "Cybersecurity Services",
+  };
+
   return (
     <div className="min-h-screen bg-gradient-dark">
+      <SEO
+        title={`${service.title} - CyberTech Experts`}
+        description={service.detailedDescription || service.description}
+        keywords={`${
+          service.title
+        }, cybersecurity, ${service.title.toLowerCase()}, security services, ${serviceName}`}
+        url={`/service/${serviceName}`}
+        type="article"
+        structuredData={serviceSchema}
+      />
       {/* Header */}
       <div className="bg-gray-900/50 backdrop-blur-sm border-b border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">

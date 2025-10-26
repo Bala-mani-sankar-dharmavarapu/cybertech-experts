@@ -19,6 +19,7 @@ import {
   Handshake,
 } from "lucide-react";
 import ContactFormDialog from "./ContactFormDialog";
+import SEO from "./SEO";
 
 const WhyChooseUsPage: React.FC = () => {
   const [isContactDialogOpen, setIsContactDialogOpen] = useState(false);
@@ -170,6 +171,13 @@ const WhyChooseUsPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-dark">
+      <SEO
+        title="Why Choose CyberTech Experts - 24/7 Protection & Expert Cybersecurity"
+        description="Discover why organizations trust CyberTech Experts for cybersecurity. 24/7 threat monitoring, AI-powered detection, rapid incident response, and certified security professionals protecting your business."
+        keywords="cybersecurity experts, 24/7 security monitoring, threat detection, incident response, malware removal, ransomware protection, vulnerability management, security operations center, SOC services"
+        url="/why-choose-us"
+        type="website"
+      />
       {/* Hero Section */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-purple-900/20"></div>

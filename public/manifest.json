@@ -1,20 +1,27 @@
 {
-  "short_name": "Cyber Tech Experts",
-  "name": "Cyber Tech Experts - Cybersecurity Solutions",
+  "short_name": "CyberTech Experts",
+  "name": "CyberTech Experts - Job-Ready Cybersecurity Training & Career Upskilling",
+  "description": "Transform your career with job-ready cybersecurity training. Master ethical hacking, SOC operations, and penetration testing. OSCP, CEH, Security+ preparation with hands-on labs and expert mentorship.",
   "icons": [
     {
       "src": "logo-with-bg.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "logo-with-bg.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#0f1729",
+  "categories": ["business", "security", "education"],
+  "lang": "en-US"
 }

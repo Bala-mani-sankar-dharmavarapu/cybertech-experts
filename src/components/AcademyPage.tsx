@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import ContactFormDialog from "./ContactFormDialog";
+import SEO from "./SEO";
 
 const AcademyPage: React.FC = () => {
   const navigate = useNavigate();
@@ -38,8 +39,65 @@ const AcademyPage: React.FC = () => {
     setIsDownloadDialogOpen(true);
   };
 
+  const courseSchema = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name: "CyberTech Experts Academy - Job-Ready Cybersecurity Training",
+    description:
+      "Comprehensive job-ready cybersecurity training and upskilling programs. Master ethical hacking, penetration testing, SOC operations, and malware analysis with hands-on labs. Prepare for industry certifications including OSCP, CEH, Security+, and PenTest+. Expert-led training with placement support for career switchers and IT professionals.",
+    provider: {
+      "@type": "Organization",
+      name: "CyberTech Experts",
+      url: "https://cybertechexperts.org",
+    },
+    educationalCredentialAwarded: [
+      "CompTIA Security+",
+      "CompTIA PenTest+",
+      "CEH - Certified Ethical Hacker",
+      "OSCP - Offensive Security Certified Professional",
+      "eJPT - eLearnSecurity Junior Penetration Tester",
+    ],
+    hasCourseInstance: {
+      "@type": "CourseInstance",
+      courseMode: "Online",
+      courseWorkload: "PT40H",
+      courseSchedule: {
+        "@type": "Schedule",
+        repeatFrequency: "Weekly",
+      },
+    },
+    audience: {
+      "@type": "Audience",
+      audienceType: [
+        "Career Changers",
+        "IT Professionals",
+        "Students",
+        "Security Enthusiasts",
+      ],
+    },
+    teaches: [
+      "Ethical Hacking",
+      "Penetration Testing",
+      "SOC Operations",
+      "Malware Analysis",
+      "Network Security",
+      "Web Application Security",
+      "Incident Response",
+      "Digital Forensics",
+    ],
+    occupationalCredentialAwarded: "Cybersecurity Professional",
+  };
+
   return (
     <div className="min-h-screen bg-gradient-dark">
+      <SEO
+        title="Job-Ready Cybersecurity Training & Upskilling Academy - CyberTech Experts"
+        description="Become job-ready in cybersecurity with our comprehensive upskilling programs. Zero to advanced training in ethical hacking, SOC operations, and penetration testing. OSCP, CEH, Security+ preparation with hands-on labs, expert mentors, and placement support. Perfect for career switchers and IT professionals."
+        keywords="job ready cybersecurity training, career change to cybersecurity, cybersecurity upskilling, SOC analyst bootcamp, ethical hacking certification, OSCP training course, CEH preparation, penetration testing academy, security operations training, hands-on cybersecurity labs, cybersecurity career program, IT to cybersecurity transition, beginner cybersecurity course, professional security training, cybersecurity job placement"
+        url="/academy"
+        type="website"
+        structuredData={courseSchema}
+      />
       <div className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Back Button */}
