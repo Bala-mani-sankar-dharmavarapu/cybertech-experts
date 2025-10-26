@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { X, Mail, Phone, User, MessageSquare, Building } from "lucide-react";
-import { watsappNumber } from "../utils/info";
+import { X } from "lucide-react";
 
 interface ContactFormDialogProps {
   isOpen: boolean;
@@ -11,15 +10,7 @@ interface ContactFormDialogProps {
   onSuccess?: () => void; // Callback function to execute after successful submission
 }
 
-interface FormData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  company: string;
-  message: string;
-  interest?: string;
-}
+const GOOGLE_FORM_URL = "https://forms.gle/vKjXgD7a4TQwD3TW7?embedded=true";
 
 const ContactFormDialog: React.FC<ContactFormDialogProps> = ({
   isOpen,
@@ -29,114 +20,14 @@ const ContactFormDialog: React.FC<ContactFormDialogProps> = ({
   formType = "contact",
   onSuccess,
 }) => {
-  const [formData, setFormData] = useState<FormData>({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    company: "",
-    message: "",
-    interest: "",
-  });
+  const [isLoading, setIsLoading] = useState(true);
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
-
-  const handleInputChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus("idle");
-
-    try {
-      // Format the message for WhatsApp based on form type
-      let whatsappMessage = "";
-
-      if (formType === "enroll") {
-        whatsappMessage =
-          `*Academy Enrollment Request*%0A%0A` +
-          `*Name:* ${formData.firstName} ${formData.lastName}%0A` +
-          `*Email:* ${formData.email}%0A` +
-          `*Phone:* ${formData.phone || "Not provided"}%0A` +
-          `*Company/College:* ${formData.company || "Not provided"}%0A` +
-          `*Training Interest:* ${formData.interest || "Not specified"}%0A` +
-          `*Additional Info:* ${formData.message || "None"}`;
-      } else if (formType === "quote") {
-        whatsappMessage =
-          `*Service Quote Request*%0A%0A` +
-          `*Name:* ${formData.firstName} ${formData.lastName}%0A` +
-          `*Email:* ${formData.email}%0A` +
-          `*Phone:* ${formData.phone || "Not provided"}%0A` +
-          `*Company/College:* ${formData.company || "Not provided"}%0A` +
-          `*Service Interest:* ${formData.interest || "Not specified"}%0A` +
-          `*Message:* ${formData.message || "None"}`;
-      } else if (formType === "download") {
-        whatsappMessage =
-          `*Curriculum Download Request*%0A%0A` +
-          `*Name:* ${formData.firstName} ${formData.lastName}%0A` +
-          `*Email:* ${formData.email}%0A` +
-          `*Phone:* ${formData.phone || "Not provided"}%0A` +
-          `*Company/College:* ${formData.company || "Not provided"}%0A` +
-          `*Training Interest:* ${formData.interest || "Not specified"}%0A` +
-          `*Additional Info:* ${formData.message || "None"}`;
-      } else {
-        whatsappMessage =
-          `*Contact Form Submission*%0A%0A` +
-          `*Name:* ${formData.firstName} ${formData.lastName}%0A` +
-          `*Email:* ${formData.email}%0A` +
-          `*Phone:* ${formData.phone || "Not provided"}%0A` +
-          `*Company/College:* ${formData.company || "Not provided"}%0A` +
-          `*Message:* ${formData.message || "None"}`;
-      }
-
-      // Clean the phone number (remove spaces, dashes, and the + sign for the URL)
-      const cleanedNumber = watsappNumber.replace(/[\s\-+]/g, "");
-
-      // Open WhatsApp with pre-filled message
-      const whatsappURL = `https://wa.me/${cleanedNumber}?text=${whatsappMessage}`;
-      window.open(whatsappURL, "_blank");
-
-      // Reset form
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        company: "",
-        message: "",
-        interest: "",
-      });
-
-      setSubmitStatus("success");
-
-      // Call onSuccess callback if provided (e.g., for PDF download)
-      if (onSuccess) {
-        onSuccess();
-      }
-
-      setTimeout(() => {
-        setSubmitStatus("idle");
-        onClose();
-      }, 2000);
-    } catch (error) {
-      setSubmitStatus("error");
-    } finally {
-      setIsSubmitting(false);
+  // Reset loading state when dialog opens
+  React.useEffect(() => {
+    if (isOpen) {
+      setIsLoading(true);
     }
-  };
+  }, [isOpen]);
 
   const getFormTitle = () => {
     switch (formType) {
@@ -175,9 +66,9 @@ const ContactFormDialog: React.FC<ContactFormDialogProps> = ({
       />
 
       {/* Dialog */}
-      <div className="relative bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl border border-gray-700 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+      <div className="relative bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl border border-gray-700 w-full max-w-4xl max-h-[90vh] flex flex-col">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-700">
+        <div className="flex items-center justify-between p-6 border-b border-gray-700 flex-shrink-0">
           <div>
             <h2 className="text-2xl font-bold text-white">{getFormTitle()}</h2>
             <p className="text-gray-300 mt-1">{getFormSubtitle()}</p>
@@ -190,293 +81,34 @@ const ContactFormDialog: React.FC<ContactFormDialogProps> = ({
           </button>
         </div>
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-6">
-          {/* Success/Error Messages */}
-          {submitStatus === "success" && (
-            <div className="bg-green-900/20 border border-green-700/30 rounded-lg p-4">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                <p className="text-green-400 font-medium">
-                  Thank you! We'll get back to you soon.
-                </p>
+        {/* Google Form Iframe */}
+        <div className="flex-1 bg-white relative overflow-auto">
+          {/* Loader - covers the entire form area */}
+          {isLoading && (
+            <div className="absolute inset-0 flex items-center justify-center bg-white z-20">
+              <div className="text-center">
+                <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                <p className="text-gray-600 font-medium">Loading form...</p>
               </div>
             </div>
           )}
 
-          {submitStatus === "error" && (
-            <div className="bg-red-900/20 border border-red-700/30 rounded-lg p-4">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-red-400 rounded-full"></div>
-                <p className="text-red-400 font-medium">
-                  Something went wrong. Please try again.
-                </p>
-              </div>
-            </div>
-          )}
-
-          {/* Name Fields */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label
-                htmlFor="firstName"
-                className="block text-sm font-medium text-gray-300 mb-2"
-              >
-                First Name *
-              </label>
-              <div className="relative">
-                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                <input
-                  type="text"
-                  id="firstName"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full pl-10 pr-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                  placeholder="Enter your first name"
-                />
-              </div>
-            </div>
-            <div>
-              <label
-                htmlFor="lastName"
-                className="block text-sm font-medium text-gray-300 mb-2"
-              >
-                Last Name *
-              </label>
-              <div className="relative">
-                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                <input
-                  type="text"
-                  id="lastName"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full pl-10 pr-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                  placeholder="Enter your last name"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Email and Phone */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-300 mb-2"
-              >
-                Email Address *
-              </label>
-              <div className="relative">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full pl-10 pr-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                  placeholder="Enter your email"
-                />
-              </div>
-            </div>
-            <div>
-              <label
-                htmlFor="phone"
-                className="block text-sm font-medium text-gray-300 mb-2"
-              >
-                Phone Number
-              </label>
-              <div className="relative">
-                <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  className="w-full pl-10 pr-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                  placeholder="Enter your phone number"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Company and Interest/Service Selection - Same row for enroll/download form */}
-          {formType === "enroll" || formType === "download" ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label
-                  htmlFor="company"
-                  className="block text-sm font-medium text-gray-300 mb-2"
-                >
-                  Company or College
-                </label>
-                <div className="relative">
-                  <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleInputChange}
-                    className="w-full pl-10 pr-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                    placeholder="Enter your company or college name"
-                  />
-                </div>
-              </div>
-              <div>
-                <label
-                  htmlFor="interest"
-                  className="block text-sm font-medium text-gray-300 mb-2"
-                >
-                  Training Interest
-                </label>
-                <select
-                  id="interest"
-                  name="interest"
-                  value={formData.interest}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                >
-                  <option value="">Select an option</option>
-                  <option value="security-plus">CompTIA Security+</option>
-                  <option value="pentest-plus">CompTIA PenTest+</option>
-                  <option value="ceh">Certified Ethical Hacker (CEH)</option>
-                  <option value="ejpt">eJPT</option>
-                  <option value="oscp">OSCP</option>
-                  <option value="general">
-                    General Cybersecurity Training
-                  </option>
-                </select>
-              </div>
-            </div>
-          ) : (
-            <>
-              {/* Company */}
-              <div>
-                <label
-                  htmlFor="company"
-                  className="block text-sm font-medium text-gray-300 mb-2"
-                >
-                  Company or College
-                </label>
-                <div className="relative">
-                  <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleInputChange}
-                    className="w-full pl-10 pr-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                    placeholder="Enter your company or college name"
-                  />
-                </div>
-              </div>
-
-              {/* Service Interest for quote form */}
-              {formType === "quote" && (
-                <div>
-                  <label
-                    htmlFor="interest"
-                    className="block text-sm font-medium text-gray-300 mb-2"
-                  >
-                    Service Interest
-                  </label>
-                  <select
-                    id="interest"
-                    name="interest"
-                    value={formData.interest}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                  >
-                    <option value="">Select an option</option>
-                    <option value="penetration-testing">
-                      Penetration Testing
-                    </option>
-                    <option value="vulnerability-assessment">
-                      Vulnerability Assessment
-                    </option>
-                    <option value="security-audit">Security Audit</option>
-                    <option value="incident-response">Incident Response</option>
-                    <option value="security-consulting">
-                      Security Consulting
-                    </option>
-                    <option value="compliance">
-                      Compliance & Risk Management
-                    </option>
-                  </select>
-                </div>
-              )}
-            </>
-          )}
-
-          {/* Message */}
-          <div>
-            <label
-              htmlFor="message"
-              className="block text-sm font-medium text-gray-300 mb-2"
-            >
-              {formType === "enroll" || formType === "download"
-                ? "Additional Information"
-                : "Message"}
-            </label>
-            <div className="relative">
-              <MessageSquare className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleInputChange}
-                rows={4}
-                className="w-full pl-10 pr-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
-                placeholder={
-                  formType === "enroll" || formType === "download"
-                    ? "Tell us about your cybersecurity background and goals..."
-                    : "Tell us about your security needs and how we can help..."
-                }
-              />
-            </div>
-          </div>
-
-          {/* Submit Button */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <button
-              type="button"
-              onClick={onClose}
-              className="px-6 py-3 border border-gray-600 text-gray-300 rounded-lg hover:bg-gray-700 hover:text-white transition-colors duration-200"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="flex-1 bg-gradient-secondary text-white px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
-            >
-              {isSubmitting ? (
-                <>
-                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                  <span>Submitting...</span>
-                </>
-              ) : (
-                <span>
-                  {formType === "enroll"
-                    ? "Enroll Now"
-                    : formType === "quote"
-                    ? "Request Quote"
-                    : formType === "download"
-                    ? "Download PDF"
-                    : "Send Message"}
-                </span>
-              )}
-            </button>
-          </div>
-        </form>
+          <iframe
+            src={GOOGLE_FORM_URL}
+            width="100%"
+            frameBorder="0"
+            marginHeight={0}
+            marginWidth={0}
+            title="Contact Form"
+            className={`w-full ${
+              isLoading ? "opacity-0" : "opacity-100"
+            } transition-opacity duration-300`}
+            style={{ height: "1800px", minHeight: "100%" }}
+            onLoad={() => setTimeout(() => setIsLoading(false), 500)}
+          >
+            Loading…
+          </iframe>
+        </div>
       </div>
     </div>
   );

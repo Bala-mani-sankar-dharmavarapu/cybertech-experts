@@ -1,169 +1,111 @@
 import React, { useState } from "react";
-import { Mail, User, Phone } from "lucide-react";
-import { email, phoneNumber, watsappNumber } from "../utils/info";
+import { X } from "lucide-react";
+import { email, phoneNumber } from "../utils/info";
+
+const GOOGLE_FORM_URL = "https://forms.gle/vKjXgD7a4TQwD3TW7?embedded=true";
 
 const Newsletter: React.FC = () => {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    email: "",
-    phone: "",
-    company: "",
-    message: "",
-  });
-
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    // Format the message for WhatsApp
-    const whatsappMessage =
-      `*New Contact Form Submission*%0A%0A` +
-      `*Name:* ${formData.firstName}%0A` +
-      `*Email:* ${formData.email}%0A` +
-      `*Phone:* ${formData.phone}%0A` +
-      `*Company:* ${formData.company}%0A` +
-      `*Message:* ${formData.message}`;
-
-    // Clean the phone number (remove spaces, dashes, and the + sign for the URL)
-    const cleanedNumber = watsappNumber.replace(/[\s\-+]/g, "");
-
-    // Open WhatsApp with pre-filled message
-    const whatsappURL = `https://wa.me/${cleanedNumber}?text=${whatsappMessage}`;
-    window.open(whatsappURL, "_blank");
-
-    // Reset form after submission
-    setFormData({
-      firstName: "",
-      email: "",
-      phone: "",
-      company: "",
-      message: "",
-    });
-  };
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <section id="contact" className="py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto text-center">
-        <div className="space-y-8">
-          <div className="space-y-6">
-            <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 text-xl font-bold tracking-wider uppercase">
-              CONTACT US
-            </h2>
-            <h3 className="text-3xl md:text-4xl font-black text-white leading-tight">
-              <span className="bg-gradient-to-r from-white via-cyan-100 to-white bg-clip-text text-transparent animate-slide-in-left hover:animate-text-glow transition-all duration-500">
-                Get Started with
-              </span>
-              <br />
-              <span className="text-cyan-400 drop-shadow-lg animate-fade-in-up hover:animate-text-glow transition-all duration-500">
-                Cyber Tech Experts
-              </span>
-            </h3>
-            <div className="text-gray-200 text-lg space-y-2 font-light tracking-wide">
-              <p>📧 Email: {email}</p>
-              <p>📞 Phone: {phoneNumber}</p>
+    <>
+      <section id="contact" className="py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="space-y-8">
+            <div className="space-y-6">
+              <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 text-xl font-bold tracking-wider uppercase">
+                CONTACT US
+              </h2>
+              <h3 className="text-3xl md:text-4xl font-black text-white leading-tight">
+                <span className="bg-gradient-to-r from-white via-cyan-100 to-white bg-clip-text text-transparent animate-slide-in-left hover:animate-text-glow transition-all duration-500">
+                  Get Started with
+                </span>
+                <br />
+                <span className="text-cyan-400 drop-shadow-lg animate-fade-in-up hover:animate-text-glow transition-all duration-500">
+                  Cyber Tech Experts
+                </span>
+              </h3>
+              <div className="text-gray-200 text-lg space-y-2 font-light tracking-wide">
+                <p>📧 Email: {email}</p>
+                <p>📞 Phone: {phoneNumber}</p>
+              </div>
+            </div>
+
+            {/* Contact Form Button */}
+            <button
+              onClick={() => {
+                setIsFormOpen(true);
+                setIsLoading(true);
+              }}
+              className="bg-gradient-secondary text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105"
+            >
+              Contact Us
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Form Dialog */}
+      {isFormOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={() => setIsFormOpen(false)}
+          />
+
+          {/* Dialog */}
+          <div className="relative bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl border border-gray-700 w-full max-w-4xl max-h-[90vh] flex flex-col">
+            {/* Header */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-700 flex-shrink-0">
+              <div>
+                <h2 className="text-2xl font-bold text-white">Get in Touch</h2>
+                <p className="text-gray-300 mt-1">
+                  We'd love to hear from you. Fill out the form below and we'll
+                  respond as soon as possible.
+                </p>
+              </div>
+              <button
+                onClick={() => setIsFormOpen(false)}
+                className="text-gray-400 hover:text-white transition-colors duration-200 p-2 hover:bg-gray-700 rounded-lg"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+
+            {/* Google Form Iframe */}
+            <div className="flex-1 bg-white relative overflow-auto">
+              {/* Loader - covers the entire form area */}
+              {isLoading && (
+                <div className="absolute inset-0 flex items-center justify-center bg-white z-20">
+                  <div className="text-center">
+                    <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                    <p className="text-gray-600 font-medium">Loading form...</p>
+                  </div>
+                </div>
+              )}
+
+              <iframe
+                src={GOOGLE_FORM_URL}
+                width="100%"
+                frameBorder="0"
+                marginHeight={0}
+                marginWidth={0}
+                title="Contact Form"
+                className={`w-full ${
+                  isLoading ? "opacity-0" : "opacity-100"
+                } transition-opacity duration-300`}
+                style={{ height: "1800px", minHeight: "100%" }}
+                onLoad={() => setTimeout(() => setIsLoading(false), 500)}
+              >
+                Loading…
+              </iframe>
             </div>
           </div>
-
-          <form onSubmit={handleSubmit} className="max-w-2xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-4 mb-6">
-              {/* Name Input */}
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <User className="h-5 w-5 text-gray-400" />
-                </div>
-                <input
-                  type="text"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleInputChange}
-                  placeholder="Name"
-                  className="w-full pl-10 pr-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                  required
-                />
-              </div>
-
-              {/* Email Input */}
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Mail className="h-5 w-5 text-gray-400" />
-                </div>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder="Email"
-                  className="w-full pl-10 pr-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                  required
-                />
-              </div>
-            </div>
-
-            {/* Phone and Company Input */}
-            <div className="grid md:grid-cols-2 gap-4 mb-6">
-              {/* Phone Input */}
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Phone className="h-5 w-5 text-gray-400" />
-                </div>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  placeholder="Phone Number"
-                  className="w-full pl-10 pr-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                  required
-                />
-              </div>
-
-              {/* Company Input */}
-              <div>
-                <input
-                  type="text"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleInputChange}
-                  placeholder="Company"
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                  required
-                />
-              </div>
-            </div>
-
-            {/* Message Input */}
-            <div className="mb-6">
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleInputChange}
-                placeholder="Message"
-                rows={4}
-                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none"
-                required
-              />
-            </div>
-
-            {/* Submit Button */}
-            <button
-              type="submit"
-              className="bg-gradient-secondary text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105"
-            >
-              Send Message
-            </button>
-          </form>
         </div>
-      </div>
-    </section>
+      )}
+    </>
   );
 };
 
