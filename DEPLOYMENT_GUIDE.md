@@ -7,17 +7,18 @@
 **Error:** `react-helmet-async` peer dependency conflict  
 **Solution:** Added `.npmrc` with `legacy-peer-deps=true`
 
-### Issue 2: Cached Dependencies
+### Issue 2: Missing ajv Dependency
 
 **Error:** `Cannot find module 'ajv/dist/compile/codegen'`  
-**Solution:** Updated `netlify.toml` to clear cache before build
+**Solution:** Added `ajv@8.12.0` as direct dependency in `package.json`
 
 ---
 
-## 📁 Files Added
+## 📁 Files Modified
 
 1. **`.npmrc`** - Ignore peer dependency warnings
 2. **`netlify.toml`** - Netlify build configuration
+3. **`package.json`** - Added `ajv@8.12.0` to fix module error
 
 ---
 
@@ -46,10 +47,12 @@ If you still face issues:
 ## ✅ What the Build Does Now
 
 ```bash
-rm -rf node_modules          # Clear cached dependencies
-npm install --legacy-peer-deps  # Fresh install ignoring peer warnings
-npm run build                # Build React app
+rm -rf node_modules             # Clear cached dependencies
+npm install --legacy-peer-deps  # Fresh install with ajv@8.12.0
+npm run build                   # Build React app successfully
 ```
+
+**Key Fix:** Added `ajv@8.12.0` to ensure webpack has the correct version.
 
 ---
 
